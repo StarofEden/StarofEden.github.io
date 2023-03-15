@@ -3,12 +3,64 @@
     <id>https://StarofEden.github.io</id>
     <title>Haxxor Bunny🍀</title>
     <link href="https://StarofEden.github.io" />
-    <updated>2023-03-11T16:00:00.000Z</updated>
+    <updated>2023-03-13T16:00:00.000Z</updated>
     <entry>
-        <id>https://starofeden.github.io/2023/03/12/2023-3-12/</id>
-        <title>第一篇文章</title>
-        <link rel="alternate" href="https://starofeden.github.io/2023/03/12/2023-3-12/"/>
-        <content type="html">&lt;p&gt;## 第一篇文章&lt;/p&gt;
+        <id>https://starofeden.github.io/2023/03/14/2023-3-14-2/</id>
+        <title>第三篇文章</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/03/14/2023-3-14-2/"/>
+        <content type="html">&lt;p&gt;第三篇示例文章&lt;/p&gt;
+</content>
+        <updated>2023-03-13T16:00:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://starofeden.github.io/2023/03/12/2023-3-14/</id>
+        <title>第二篇文章</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/03/12/2023-3-14/"/>
+        <content type="html">&lt;p&gt;第二篇示例文章&lt;/p&gt;
+</content>
+        <updated>2023-03-11T16:00:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://starofeden.github.io/2023/03/12/Java%E6%98%93%E9%94%99%E5%90%88%E9%9B%86/</id>
+        <title>java易错总结</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/03/12/Java%E6%98%93%E9%94%99%E5%90%88%E9%9B%86/"/>
+        <content type="html">&lt;h1 id=&#34;java易错总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#java易错总结&#34;&gt;#&lt;/a&gt; &lt;strong&gt;java 易错总结&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;1字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1字符串&#34;&gt;#&lt;/a&gt; 1. 字符串&lt;/h2&gt;
+&lt;p&gt;String str = scanner.next ();	接收字符串用.next () 或.nextLine ()&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;next&lt;/td&gt;
+&lt;td&gt;1. 不能接收空格，只能得到不带空格的字符串&lt;br&gt;2. 读到有效字符后才会将空格、Tab、Enter 视为结束符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;nextLine&lt;/td&gt;
+&lt;td&gt;1. 可以接收空格，得到带空格的字符串&lt;br&gt;2.nextLine () 将 Enter 视为结束&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+        <updated>2023-03-11T16:00:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://starofeden.github.io/2023/03/12/%E7%AC%AC%E5%9B%9B%E7%AF%87%E6%96%87%E7%AB%A0/</id>
+        <title>第四篇文章</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/03/12/%E7%AC%AC%E5%9B%9B%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+        <content type="html">&lt;p&gt;第四篇示例文章&lt;/p&gt;
+</content>
+        <updated>2023-03-11T16:00:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://starofeden.github.io/2023/03/12/%E7%AC%AC%E4%BA%94%E7%AF%87%E6%96%87%E7%AB%A0/</id>
+        <title>第五篇文章</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/03/12/%E7%AC%AC%E4%BA%94%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+        <content type="html">&lt;p&gt;第五篇示例文章&lt;/p&gt;
 </content>
         <updated>2023-03-11T16:00:00.000Z</updated>
     </entry>
