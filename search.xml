@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>java题目</title>
+      <link href="/2023/03/15/Java%E9%A2%98/"/>
+      <url>/2023/03/15/Java%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="java题目"><a class="markdownIt-Anchor" href="#java题目">#</a> <strong>java 题目</strong></h1><h2 id="1"><a class="markdownIt-Anchor" href="#1">#</a> 1.</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第三篇文章</title>
       <link href="/2023/03/14/2023-3-14-2/"/>
       <url>/2023/03/14/2023-3-14-2/</url>
@@ -17,24 +30,11 @@
     
     
     <entry>
-      <title>第二篇文章</title>
-      <link href="/2023/03/12/2023-3-14/"/>
-      <url>/2023/03/12/2023-3-14/</url>
-      
-        <content type="html"><![CDATA[<p>第二篇示例文章</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>java易错总结</title>
       <link href="/2023/03/12/Java%E6%98%93%E9%94%99%E5%90%88%E9%9B%86/"/>
       <url>/2023/03/12/Java%E6%98%93%E9%94%99%E5%90%88%E9%9B%86/</url>
       
-        <content type="html"><![CDATA[<h1 id="java易错总结"><a class="markdownIt-Anchor" href="#java易错总结">#</a> <strong>java 易错总结</strong></h1><h2 id="1字符串"><a class="markdownIt-Anchor" href="#1字符串">#</a> 1. 字符串</h2><p>String str = scanner.next ();接收字符串用.next () 或.nextLine ()</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>next</td><td>1. 不能接收空格，只能得到不带空格的字符串<br>2. 读到有效字符后才会将空格、Tab、Enter 视为结束符</td></tr><tr><td>nextLine</td><td>1. 可以接收空格，得到带空格的字符串<br>2.nextLine () 将 Enter 视为结束</td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h1 id="java易错总结"><a class="markdownIt-Anchor" href="#java易错总结">#</a> <strong>java 易错总结</strong></h1><h2 id="1字符串"><a class="markdownIt-Anchor" href="#1字符串">#</a> 1. 字符串</h2><p>String str = scanner.next ();接收字符串用.next () 或.nextLine ()</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>next</td><td>1. 不能接收空格，只能得到不带空格的字符串<br>2. 读到有效字符后才会将空格、Tab、Enter 视为结束符</td></tr><tr><td>nextLine</td><td>1. 可以接收空格，得到带空格的字符串<br>2.nextLine () 将 Enter 视为结束</td></tr></tbody></table><h2 id="数组"><a class="markdownIt-Anchor" href="#数组">#</a> 数组</h2><h3 id="定义数组"><a class="markdownIt-Anchor" href="#定义数组">#</a> 定义数组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[][] = <span class="keyword">new</span> <span class="title class_">int</span> [n][n];</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
