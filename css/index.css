@@ -583,7 +583,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: url(https://s2.loli.net/2023/03/14/IE3nlSWLKdiDZeG.jpg);
+  background: url(https://s2.loli.net/2023/11/04/FoMs3E1ZHx9QUtT.jpg);
   background-attachment: local;
   background-position: center;
   background-size: cover;
@@ -2348,6 +2348,60 @@ h1.page-title + .tag-cloud-list {
 #nav .site-page:not(.child):hover:after {
   width: 100%;
 }
+.loading-bg {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: var(--anzhiyu-card-bg);
+  z-index: 1001;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  transition: 0.3s;
+}
+#loading-box .loading-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: auto;
+  border: 4px solid #f0f0f2;
+  animation-duration: 0.3s;
+  animation-name: loadingAction;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#loading-box .loading-image-dot {
+  width: 30px;
+  height: 30px;
+  background: #6bdf8f;
+  position: absolute;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(18px, 24px);
+}
+#loading-box.loaded .loading-bg {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  z-index: -1000;
+}
+@keyframes loadingAction {
+  0% {
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+  }
+  100% {
+    opacity: 0.4;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    filter: alpha(opacity=40);
+  }
+}
 #pagination .pagination {
   margin-top: 20px;
   text-align: center;
@@ -2919,6 +2973,76 @@ h1.page-title + .tag-cloud-list {
   margin: 0;
   list-style: none;
 }
+.Cuteen_DarkSky,
+.Cuteen_DarkSky:before {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 88888888;
+}
+.Cuteen_DarkSky {
+  background: linear-gradient(to top, #f8cd71 0, #5bfde9 80%);
+}
+.Cuteen_DarkSky:before {
+  transition: 2s ease all;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  background: linear-gradient(to top, #30cfd0 0, #330867 100%);
+}
+.DarkMode .Cuteen_DarkSky:before {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.Cuteen_DarkPlanet {
+  z-index: 99999999;
+  position: fixed;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  animation: CuteenPlanetMove 2s cubic-bezier(0.7, 0, 0, 1);
+  transform-origin: center bottom;
+}
+.Cuteen_DarkPlanet #sun {
+  position: absolute;
+  border-radius: 100%;
+  left: 44%;
+  top: 30%;
+  height: 6rem;
+  width: 6rem;
+  background: #ffee94;
+  box-shadow: 0 0 40px #ffee94;
+}
+.Cuteen_DarkPlanet #moon {
+  position: absolute;
+  border-radius: 100%;
+  left: 44%;
+  top: 30%;
+  position: absolute;
+  border-radius: 100%;
+  height: 6rem;
+  width: 6rem;
+  box-shadow: -1.8em 1.8em 0 0.2em #fff;
+}
+.search span {
+  display: none;
+}
+.menus_item a {
+  text-decoration: none !important;
+}
+@keyframes CuteenPlanetMove {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 #vcomment {
   font-size: 1.1em;
 }
@@ -3015,6 +3139,29 @@ span.mathjax-overflow {
 }
 .snackbar-css {
   border-radius: 5px !important;
+}
+[data-theme="dark"] #web_bg {
+  background: url(https://s2.loli.net/2023/11/04/nXWTPkgaHoiJRyD.png);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 800px) {
+  #web_bg {
+    background: url(https://s2.loli.net/2023/11/04/FoMs3E1ZHx9QUtT.jpg) !important;
+    background-attachment: local !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+  [data-theme="dark"] #web_bg {
+    background: url(https://s2.loli.net/2023/11/04/nXWTPkgaHoiJRyD.png) !important;
+    background-attachment: local !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
 }
 #article-container .btn-center {
   margin: 0 0 20px;
@@ -3122,7 +3269,6 @@ span.mathjax-overflow {
   max-width: none;
   width: calc(100% + 20px);
   height: 250px;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   opacity: 0.8;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
@@ -3141,7 +3287,6 @@ span.mathjax-overflow {
   height: 100%;
   color: #fff;
   text-transform: uppercase;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 #article-container figure.gallery-group figcaption > a {

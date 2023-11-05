@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>StarofEden🍀 • Posts by &#34;hexo blog&#34; category</title>
+        <link>https://StarofEden.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Sat, 04 Nov 2023 00:00:00 +0800</pubDate>
+        <lastBuildDate>Sat, 04 Nov 2023 00:00:00 +0800</lastBuildDate>
+        <category>JavaScript</category>
+        <category>nodejs</category>
+        <category>xctf</category>
+        <category>kali</category>
+        <category>web漏洞</category>
+        <category>xss</category>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2023/11/04/%E5%85%B3%E4%BA%8Ehexo-butterfly%E5%9B%BE%E5%BA%8A%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+            <title>关于hexo butterfly图床图片加载不出来的问题</title>
+            <link>https://starofeden.github.io/2023/11/04/%E5%85%B3%E4%BA%8Ehexo-butterfly%E5%9B%BE%E5%BA%8A%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+            <pubDate>Sat, 04 Nov 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;0x00-前言一些废话可略过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x00-前言一些废话可略过&#34;&gt;#&lt;/a&gt; 0x00  前言（一些废话，可略过）&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;买了新电脑后就把旧电脑上的 blog 文件移过来了，基本上没遇到问题，除了加载网页时特别慢&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;发现问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#发现问题&#34;&gt;#&lt;/a&gt; 发现问题&lt;/h2&gt;
+&lt;p&gt;我设置了网页加载动画，但是加载时间特别特别长，几分钟都没加载出来&lt;br&gt;
+于是我把网页加载动画关了。&lt;br&gt;
+一开始我以为是 css、js 文件的问题，我用 f12 查看到底是谁加载那么慢！！！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20125027.png&#34; alt=&#34;屏幕截图 2023-11-04 125027&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后下面的图片文件全部标红了。&lt;br&gt;
+我百思不得其解，我还以为是图床的问题，但是有一两张图片还是坚持不懈的加载了出来。&lt;/p&gt;
+&lt;p&gt;然后，通过我不断地百度，我发现，原来是我 lazyload 出了问题。&lt;br&gt;
+图片文件后面的 lazyload 标红了。&lt;/p&gt;
+&lt;h1 id=&#34;0x01-解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x01-解决办法&#34;&gt;#&lt;/a&gt; 0x01  解决办法&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;先看看是不是自己网络的问题，我用连手机热点就加载不出来。如果不是：&lt;/li&gt;
+&lt;li&gt;可能是 lazyload 过时了或者丢失了部分文件&lt;br&gt;
+在你的 blog 目录下安装 lazyload:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install hexo-lazyload --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20010221.png&#34; alt=&#34;屏幕截图 2023-11-04 010221&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为了避免浏览器缓存的干扰，建议换一个浏览器来测试一下是否成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;0x02-一个神奇的现象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x02-一个神奇的现象&#34;&gt;#&lt;/a&gt; 0x02  一个神奇的现象&lt;/h1&gt;
+&lt;p&gt;我用流量开热点，我的 blog 就不能加载 lazyload， &lt;code&gt;用校园网就可以&lt;/code&gt; &lt;br&gt;
+我查看了一下 lazyload 的地址：&lt;br&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20004432.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;难道是跟cdn有关？&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;0x03-什么是cdn&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x03-什么是cdn&#34;&gt;#&lt;/a&gt; 0x03 什么是 CDN？&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;cdn 技术&lt;strong&gt;将内容缓存在终端用户附近&lt;/strong&gt;。&lt;br&gt;
+随着互联网用户越来越多，信息通道越来越拥挤。人们打开一个网页需要向服务器发出 request，获得服务器的 response 才能正常打开一个网页。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CDN 就是采用更多的缓存服务器（CDN 边缘节点），布放在用户访问相对集中的地区或网络中。当用户访问网站时，利用全局负载技术，将用户的访问指向距离最近的缓存服务器上，由缓存服务器响应用户请求。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;听起来更镜像有点相似，但是镜像服务器是源内容服务器的完整复制，大多用来下载文件。而 cdn 是部分内容缓存，对网页的静态资源分发，能减少网页的加载时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;虽然还是不懂为什么连热点用不了 cdn 加载网页图片，明明我我上传图片到用 cdn 加速的 github 图床都还可以&lt;/em&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
