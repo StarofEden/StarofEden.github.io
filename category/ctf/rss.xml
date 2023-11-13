@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>StarofEden🍀 • Posts by &#34;ctf&#34; category</title>
+        <title>StarofEden🌸 • Posts by &#34;ctf&#34; category</title>
         <link>https://StarofEden.github.io</link>
         <description></description>
         <language>zh-CN</language>
         <pubDate>Sun, 01 Oct 2023 00:00:00 +0800</pubDate>
         <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0800</lastBuildDate>
+        <category>mysql</category>
         <category>JavaScript</category>
         <category>nodejs</category>
         <category>xctf</category>
-        <category>kali</category>
-        <category>web漏洞</category>
-        <category>xss</category>
+        <category>网络安全</category>
+        <category>html</category>
         <item>
             <guid isPermalink="true">https://starofeden.github.io/2023/10/01/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</guid>
             <title>信息搜集</title>

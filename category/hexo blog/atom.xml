@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://StarofEden.github.io</id>
-    <title>StarofEden🍀 • Posts by &#34;hexo blog&#34; category</title>
+    <title>StarofEden🌸 • Posts by &#34;hexo blog&#34; category</title>
     <link href="https://StarofEden.github.io" />
     <updated>2023-11-03T16:00:00.000Z</updated>
+    <category term="mysql" />
     <category term="JavaScript" />
     <category term="nodejs" />
     <category term="xctf" />
-    <category term="kali" />
-    <category term="web漏洞" />
-    <category term="xss" />
+    <category term="网络安全" />
+    <category term="html" />
     <entry>
         <id>https://starofeden.github.io/2023/11/04/%E5%85%B3%E4%BA%8Ehexo-butterfly%E5%9B%BE%E5%BA%8A%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/</id>
         <title>关于hexo butterfly图床图片加载不出来的问题</title>
@@ -22,26 +22,33 @@
 &lt;p&gt;我设置了网页加载动画，但是加载时间特别特别长，几分钟都没加载出来&lt;br&gt;
 于是我把网页加载动画关了。&lt;br&gt;
 一开始我以为是 css、js 文件的问题，我用 f12 查看到底是谁加载那么慢！！！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20125027.png&#34; alt=&#34;屏幕截图 2023-11-04 125027&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052038785.png&#34; alt=&#34;屏幕截图 2023-11-04 125027&#34;&gt;&lt;/p&gt;
 &lt;p&gt;然后下面的图片文件全部标红了。&lt;br&gt;
 我百思不得其解，我还以为是图床的问题，但是有一两张图片还是坚持不懈的加载了出来。&lt;/p&gt;
 &lt;p&gt;然后，通过我不断地百度，我发现，原来是我 lazyload 出了问题。&lt;br&gt;
 图片文件后面的 lazyload 标红了。&lt;/p&gt;
 &lt;h1 id=&#34;0x01-解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x01-解决办法&#34;&gt;#&lt;/a&gt; 0x01  解决办法&lt;/h1&gt;
+&lt;h2 id=&#34;配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#配置&#34;&gt;#&lt;/a&gt; 配置&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;先看看是不是自己网络的问题，我用连手机热点就加载不出来。如果不是：&lt;/li&gt;
 &lt;li&gt;可能是 lazyload 过时了或者丢失了部分文件&lt;br&gt;
 在你的 blog 目录下安装 lazyload:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install hexo-lazyload --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20010221.png&#34; alt=&#34;屏幕截图 2023-11-04 010221&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052039017.png&#34; alt=&#34;屏幕截图 2023-11-04 010221&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;为了避免浏览器缓存的干扰，建议换一个浏览器来测试一下是否成功&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;使用了免费在线图床&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#使用了免费在线图床&#34;&gt;#&lt;/a&gt; 使用了免费在线图床&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;使用的免费图床和 cdn 加速的 github 图床加载都很慢，只能去买一个阿里云 OSS&lt;/li&gt;
+&lt;li&gt;可以去看看阿里云 oss+PicGo+Typora 的教程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&#39;p blue&#39;&gt;自己买了一个阿里云OSS，只用来当图床使用一年也就几块钱，试了一下速度很快。&lt;/span&gt;
 &lt;h1 id=&#34;0x02-一个神奇的现象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x02-一个神奇的现象&#34;&gt;#&lt;/a&gt; 0x02  一个神奇的现象&lt;/h1&gt;
 &lt;p&gt;我用流量开热点，我的 blog 就不能加载 lazyload， &lt;code&gt;用校园网就可以&lt;/code&gt; &lt;br&gt;
 我查看了一下 lazyload 的地址：&lt;br&gt;
-&lt;img src=&#34;https://cdn.jsdelivr.net/gh/StarofEden/blog@main/image1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-11-04%20004432.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052038340.png&#34; alt=&#34;屏幕截图 2023-11-04 004432&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;难道是跟cdn有关？&lt;/code&gt;&lt;/p&gt;
 &lt;h1 id=&#34;0x03-什么是cdn&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x03-什么是cdn&#34;&gt;#&lt;/a&gt; 0x03 什么是 CDN？&lt;/h1&gt;
 &lt;ul&gt;
@@ -55,6 +62,25 @@
 &lt;li&gt;听起来更镜像有点相似，但是镜像服务器是源内容服务器的完整复制，大多用来下载文件。而 cdn 是部分内容缓存，对网页的静态资源分发，能减少网页的加载时间。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;虽然还是不懂为什么连热点用不了 cdn 加载网页图片，明明我我上传图片到用 cdn 加速的 github 图床都还可以&lt;/em&gt;&lt;/p&gt;
+</content>
+        <updated>2023-11-03T16:00:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://starofeden.github.io/2023/11/04/%E9%AD%94%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/</id>
+        <title>魔改hexo butterfly时遇到的一些问题</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/11/04/%E9%AD%94%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+        <content type="html">&lt;h1 id=&#34;按照教程设置了文章三栏之后依旧是两栏&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#按照教程设置了文章三栏之后依旧是两栏&#34;&gt;#&lt;/a&gt; 按照教程设置了文章三栏之后依旧是两栏&lt;/h1&gt;
+&lt;p&gt;我是按照这位大佬的教程设置的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.fomal.cc/posts/d739261b.html&#34;&gt;https://www.fomal.cc/posts/d739261b.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解决办法&#34;&gt;#&lt;/a&gt; &lt;strong&gt;解决办法&lt;/strong&gt;&lt;/h2&gt;
+&lt;span class=&#39;p purple&#39;&gt;可能是之前设置的文章两栏没关&lt;/span&gt;
+&lt;ul&gt;
+&lt;li&gt;在网站配置文件_config.yml 找到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#双侧栏&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;butterfly_article_double_row:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里把 true 改为 false&lt;/p&gt;
 </content>
         <updated>2023-11-03T16:00:00.000Z</updated>
     </entry>
