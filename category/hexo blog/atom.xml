@@ -81,6 +81,20 @@
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#双侧栏&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;butterfly_article_double_row:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;这里把 true 改为 false&lt;/p&gt;
+&lt;h1 id=&#34;如何改变页面的一些颜色&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何改变页面的一些颜色&#34;&gt;#&lt;/a&gt; 如何改变页面的一些颜色&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;想改一改鼠标选中后的文字颜色，还有一些按钮的颜色&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;步骤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#步骤&#34;&gt;#&lt;/a&gt; 步骤:&lt;/h2&gt;
+&lt;p&gt;按下 f12&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202401122244519.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点击左上角的按钮，选中你要修改的图标，就可以看到他的源码&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202401122247512.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可以看到它是在一个叫 index.css 的文件夹。只要在对应文件夹的对应位置修改颜色即可。&lt;/p&gt;
+&lt;h2 id=&#34;遇到的问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遇到的问题&#34;&gt;#&lt;/a&gt; 遇到的问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;查找了 blog 文件夹后发现没有 index.css 文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我的方法是在 blog/source/css 目录下创建一个 index.css 文件，将 f12 中的 index.css 全部复制粘贴进去&lt;/p&gt;
 </content>
         <updated>2023-11-03T16:00:00.000Z</updated>
     </entry>
