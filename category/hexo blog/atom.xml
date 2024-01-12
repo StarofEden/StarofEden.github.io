@@ -14,54 +14,34 @@
         <id>https://starofeden.github.io/2023/11/04/%E5%85%B3%E4%BA%8Ehexo-butterfly%E5%9B%BE%E5%BA%8A%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/</id>
         <title>关于hexo butterfly图床图片加载不出来的问题</title>
         <link rel="alternate" href="https://starofeden.github.io/2023/11/04/%E5%85%B3%E4%BA%8Ehexo-butterfly%E5%9B%BE%E5%BA%8A%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-        <content type="html">&lt;h1 id=&#34;0x00-前言一些废话可略过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x00-前言一些废话可略过&#34;&gt;#&lt;/a&gt; 0x00  前言（一些废话，可略过）&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;买了新电脑后就把旧电脑上的 blog 文件移过来了，基本上没遇到问题，除了加载网页时特别慢&lt;/p&gt;
+        <content type="html">&lt;h1 id=&#34;0x00-前言（一些废话，可略过）&#34;&gt;&lt;a href=&#34;#0x00-前言（一些废话，可略过）&#34; class=&#34;headerlink&#34; title=&#34;0x00  前言（一些废话，可略过）&#34;&gt;&lt;/a&gt;0x00  前言（一些废话，可略过）&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;买了新电脑后就把旧电脑上的blog文件移过来了，基本上没遇到问题，除了加载网页时特别慢&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;发现问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#发现问题&#34;&gt;#&lt;/a&gt; 发现问题&lt;/h2&gt;
-&lt;p&gt;我设置了网页加载动画，但是加载时间特别特别长，几分钟都没加载出来&lt;br&gt;
-于是我把网页加载动画关了。&lt;br&gt;
-一开始我以为是 css、js 文件的问题，我用 f12 查看到底是谁加载那么慢！！！&lt;/p&gt;
+&lt;h2 id=&#34;发现问题&#34;&gt;&lt;a href=&#34;#发现问题&#34; class=&#34;headerlink&#34; title=&#34;发现问题&#34;&gt;&lt;/a&gt;发现问题&lt;/h2&gt;&lt;p&gt;我设置了网页加载动画，但是加载时间特别特别长，几分钟都没加载出来&lt;br&gt;于是我把网页加载动画关了。&lt;br&gt;一开始我以为是css、js文件的问题，我用f12查看到底是谁加载那么慢！！！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052038785.png&#34; alt=&#34;屏幕截图 2023-11-04 125027&#34;&gt;&lt;/p&gt;
-&lt;p&gt;然后下面的图片文件全部标红了。&lt;br&gt;
-我百思不得其解，我还以为是图床的问题，但是有一两张图片还是坚持不懈的加载了出来。&lt;/p&gt;
-&lt;p&gt;然后，通过我不断地百度，我发现，原来是我 lazyload 出了问题。&lt;br&gt;
-图片文件后面的 lazyload 标红了。&lt;/p&gt;
-&lt;h1 id=&#34;0x01-解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x01-解决办法&#34;&gt;#&lt;/a&gt; 0x01  解决办法&lt;/h1&gt;
-&lt;h2 id=&#34;配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#配置&#34;&gt;#&lt;/a&gt; 配置&lt;/h2&gt;
-&lt;ul&gt;
+&lt;p&gt;然后下面的图片文件全部标红了。&lt;br&gt;我百思不得其解，我还以为是图床的问题，但是有一两张图片还是坚持不懈的加载了出来。&lt;/p&gt;
+&lt;p&gt;然后，通过我不断地百度，我发现，原来是我lazyload出了问题。&lt;br&gt;图片文件后面的lazyload标红了。&lt;/p&gt;
+&lt;h1 id=&#34;0x01-解决办法&#34;&gt;&lt;a href=&#34;#0x01-解决办法&#34; class=&#34;headerlink&#34; title=&#34;0x01  解决办法&#34;&gt;&lt;/a&gt;0x01  解决办法&lt;/h1&gt;&lt;h2 id=&#34;配置&#34;&gt;&lt;a href=&#34;#配置&#34; class=&#34;headerlink&#34; title=&#34;配置&#34;&gt;&lt;/a&gt;配置&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;先看看是不是自己网络的问题，我用连手机热点就加载不出来。如果不是：&lt;/li&gt;
-&lt;li&gt;可能是 lazyload 过时了或者丢失了部分文件&lt;br&gt;
-在你的 blog 目录下安装 lazyload:&lt;/li&gt;
+&lt;li&gt;可能是lazyload过时了或者丢失了部分文件&lt;br&gt;在你的blog目录下安装lazyload:&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install hexo-lazyload --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052039017.png&#34; alt=&#34;屏幕截图 2023-11-04 010221&#34;&gt;&lt;/li&gt;
+&lt;li&gt;为了避免浏览器缓存的干扰，建议换一个浏览器来测试一下是否成功&lt;h2 id=&#34;使用了免费在线图床&#34;&gt;&lt;a href=&#34;#使用了免费在线图床&#34; class=&#34;headerlink&#34; title=&#34;使用了免费在线图床&#34;&gt;&lt;/a&gt;使用了免费在线图床&lt;/h2&gt;&lt;/li&gt;
+&lt;li&gt;使用的免费图床和cdn加速的github图床加载都很慢，只能去买一个阿里云OSS&lt;/li&gt;
+&lt;li&gt;可以去看看阿里云oss+PicGo+Typora的教程&lt;span class=&#39;p blue&#39;&gt;自己买了一个阿里云OSS，只用来当图床使用一年也就几块钱，试了一下速度很快。&lt;/span&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;npm install hexo-lazyload --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052039017.png&#34; alt=&#34;屏幕截图 2023-11-04 010221&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;为了避免浏览器缓存的干扰，建议换一个浏览器来测试一下是否成功&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;使用了免费在线图床&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#使用了免费在线图床&#34;&gt;#&lt;/a&gt; 使用了免费在线图床&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;使用的免费图床和 cdn 加速的 github 图床加载都很慢，只能去买一个阿里云 OSS&lt;/li&gt;
-&lt;li&gt;可以去看看阿里云 oss+PicGo+Typora 的教程&lt;/li&gt;
-&lt;/ul&gt;
-&lt;span class=&#39;p blue&#39;&gt;自己买了一个阿里云OSS，只用来当图床使用一年也就几块钱，试了一下速度很快。&lt;/span&gt;
-&lt;h1 id=&#34;0x02-一个神奇的现象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x02-一个神奇的现象&#34;&gt;#&lt;/a&gt; 0x02  一个神奇的现象&lt;/h1&gt;
-&lt;p&gt;我用流量开热点，我的 blog 就不能加载 lazyload， &lt;code&gt;用校园网就可以&lt;/code&gt; &lt;br&gt;
-我查看了一下 lazyload 的地址：&lt;br&gt;
-&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052038340.png&#34; alt=&#34;屏幕截图 2023-11-04 004432&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;0x02-一个神奇的现象&#34;&gt;&lt;a href=&#34;#0x02-一个神奇的现象&#34; class=&#34;headerlink&#34; title=&#34;0x02  一个神奇的现象&#34;&gt;&lt;/a&gt;0x02  一个神奇的现象&lt;/h1&gt;&lt;p&gt;我用流量开热点，我的blog就不能加载lazyload，&lt;code&gt;用校园网就可以&lt;/code&gt;&lt;br&gt;我查看了一下lazyload的地址：&lt;br&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311052038340.png&#34; alt=&#34;屏幕截图 2023-11-04 004432&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;难道是跟cdn有关？&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&#34;0x03-什么是cdn&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#0x03-什么是cdn&#34;&gt;#&lt;/a&gt; 0x03 什么是 CDN？&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;cdn 技术&lt;strong&gt;将内容缓存在终端用户附近&lt;/strong&gt;。&lt;br&gt;
-随着互联网用户越来越多，信息通道越来越拥挤。人们打开一个网页需要向服务器发出 request，获得服务器的 response 才能正常打开一个网页。&lt;/li&gt;
+&lt;h1 id=&#34;0x03-什么是CDN？&#34;&gt;&lt;a href=&#34;#0x03-什么是CDN？&#34; class=&#34;headerlink&#34; title=&#34;0x03 什么是CDN？&#34;&gt;&lt;/a&gt;0x03 什么是CDN？&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;cdn技术&lt;strong&gt;将内容缓存在终端用户附近&lt;/strong&gt;。&lt;br&gt;随着互联网用户越来越多,信息通道越来越拥挤。人们打开一个网页需要向服务器发出request，获得服务器的response才能正常打开一个网页。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;CDN 就是采用更多的缓存服务器（CDN 边缘节点），布放在用户访问相对集中的地区或网络中。当用户访问网站时，利用全局负载技术，将用户的访问指向距离最近的缓存服务器上，由缓存服务器响应用户请求。&lt;/p&gt;
+&lt;p&gt;CDN就是采用更多的缓存服务器（CDN边缘节点），布放在用户访问相对集中的地区或网络中。当用户访问网站时，利用全局负载技术，将用户的访问指向距离最近的缓存服务器上，由缓存服务器响应用户请求。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;听起来更镜像有点相似，但是镜像服务器是源内容服务器的完整复制，大多用来下载文件。而 cdn 是部分内容缓存，对网页的静态资源分发，能减少网页的加载时间。&lt;/li&gt;
+&lt;li&gt;听起来更镜像有点相似，但是镜像服务器是源内容服务器的完整复制，大多用来下载文件。而cdn是部分内容缓存，对网页的静态资源分发，能减少网页的加载时间。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;虽然还是不懂为什么连热点用不了 cdn 加载网页图片，明明我我上传图片到用 cdn 加速的 github 图床都还可以&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;虽然还是不懂为什么连热点用不了cdn加载网页图片,明明我我上传图片到用cdn加速的github图床都还可以&lt;/em&gt;&lt;/p&gt;
 </content>
         <updated>2023-11-03T16:00:00.000Z</updated>
     </entry>
@@ -69,32 +49,25 @@
         <id>https://starofeden.github.io/2023/11/04/%E9%AD%94%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/</id>
         <title>魔改hexo butterfly时遇到的一些问题</title>
         <link rel="alternate" href="https://starofeden.github.io/2023/11/04/%E9%AD%94%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-        <content type="html">&lt;h1 id=&#34;按照教程设置了文章三栏之后依旧是两栏&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#按照教程设置了文章三栏之后依旧是两栏&#34;&gt;#&lt;/a&gt; 按照教程设置了文章三栏之后依旧是两栏&lt;/h1&gt;
-&lt;p&gt;我是按照这位大佬的教程设置的：&lt;/p&gt;
+        <content type="html">&lt;h1 id=&#34;按照教程设置了文章三栏之后依旧是两栏&#34;&gt;&lt;a href=&#34;#按照教程设置了文章三栏之后依旧是两栏&#34; class=&#34;headerlink&#34; title=&#34;按照教程设置了文章三栏之后依旧是两栏&#34;&gt;&lt;/a&gt;按照教程设置了文章三栏之后依旧是两栏&lt;/h1&gt;&lt;p&gt;我是按照这位大佬的教程设置的：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.fomal.cc/posts/d739261b.html&#34;&gt;https://www.fomal.cc/posts/d739261b.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;解决办法&#34;&gt;&lt;a href=&#34;#解决办法&#34; class=&#34;headerlink&#34; title=&#34;解决办法&#34;&gt;&lt;/a&gt;&lt;strong&gt;解决办法&lt;/strong&gt;&lt;/h2&gt;&lt;span class=&#39;p purple&#39;&gt;可能是之前设置的文章两栏没关&lt;/span&gt;
+&lt;ul&gt;
+&lt;li&gt;在网站配置文件_config.yml找到&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#双侧栏&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;butterfly_article_double_row:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+这里把true改为false&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解决办法&#34;&gt;#&lt;/a&gt; &lt;strong&gt;解决办法&lt;/strong&gt;&lt;/h2&gt;
-&lt;span class=&#39;p purple&#39;&gt;可能是之前设置的文章两栏没关&lt;/span&gt;
-&lt;ul&gt;
-&lt;li&gt;在网站配置文件_config.yml 找到&lt;/li&gt;
+&lt;h1 id=&#34;如何改变页面的一些颜色&#34;&gt;&lt;a href=&#34;#如何改变页面的一些颜色&#34; class=&#34;headerlink&#34; title=&#34;如何改变页面的一些颜色&#34;&gt;&lt;/a&gt;如何改变页面的一些颜色&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;想改一改鼠标选中后的文字颜色，还有一些按钮的颜色&lt;h2 id=&#34;步骤&#34;&gt;&lt;a href=&#34;#步骤&#34; class=&#34;headerlink&#34; title=&#34;步骤:&#34;&gt;&lt;/a&gt;步骤:&lt;/h2&gt;按下f12&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202401122244519.png&#34; alt=&#34;img&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#双侧栏&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;butterfly_article_double_row:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这里把 true 改为 false&lt;/p&gt;
-&lt;h1 id=&#34;如何改变页面的一些颜色&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何改变页面的一些颜色&#34;&gt;#&lt;/a&gt; 如何改变页面的一些颜色&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;想改一改鼠标选中后的文字颜色，还有一些按钮的颜色&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;步骤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#步骤&#34;&gt;#&lt;/a&gt; 步骤:&lt;/h2&gt;
-&lt;p&gt;按下 f12&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202401122244519.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
 &lt;p&gt;点击左上角的按钮，选中你要修改的图标，就可以看到他的源码&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202401122247512.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
-&lt;p&gt;可以看到它是在一个叫 index.css 的文件夹。只要在对应文件夹的对应位置修改颜色即可。&lt;/p&gt;
-&lt;h2 id=&#34;遇到的问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遇到的问题&#34;&gt;#&lt;/a&gt; 遇到的问题&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;查找了 blog 文件夹后发现没有 index.css 文件&lt;/li&gt;
+&lt;p&gt;可以看到它是在一个叫index.css的文件夹。只要在对应文件夹的对应位置修改颜色即可。&lt;/p&gt;
+&lt;h2 id=&#34;遇到的问题&#34;&gt;&lt;a href=&#34;#遇到的问题&#34; class=&#34;headerlink&#34; title=&#34;遇到的问题&#34;&gt;&lt;/a&gt;遇到的问题&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;查找了blog文件夹后发现没有index.css文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;我的方法是在 blog/source/css 目录下创建一个 index.css 文件，将 f12 中的 index.css 全部复制粘贴进去&lt;/p&gt;
+&lt;p&gt;我的方法是在blog/source/css目录下创建一个index.css文件，将f12中的index.css全部复制粘贴进去&lt;/p&gt;
 </content>
         <updated>2023-11-03T16:00:00.000Z</updated>
     </entry>

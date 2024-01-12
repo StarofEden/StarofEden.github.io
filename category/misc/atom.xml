@@ -14,58 +14,29 @@
         <id>https://starofeden.github.io/2023/08/17/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84misc%E5%AD%A6%E4%B9%A0/</id>
         <title>ctfshow misc做题笔记</title>
         <link rel="alternate" href="https://starofeden.github.io/2023/08/17/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84misc%E5%AD%A6%E4%B9%A0/"/>
-        <content type="html">&lt;h1 id=&#34;从0开始的misc学习&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#从0开始的misc学习&#34;&gt;#&lt;/a&gt; 从 0 开始的 misc 学习&lt;/h1&gt;
-&lt;h2 id=&#34;pcap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pcap&#34;&gt;#&lt;/a&gt; &lt;strong&gt;.pcap&lt;/strong&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;追踪 TCP 流&lt;/li&gt;
+        <content type="html">&lt;h1 id=&#34;从0开始的misc学习&#34;&gt;&lt;a href=&#34;#从0开始的misc学习&#34; class=&#34;headerlink&#34; title=&#34;从0开始的misc学习&#34;&gt;&lt;/a&gt;从0开始的misc学习&lt;/h1&gt;&lt;h2 id=&#34;pcap&#34;&gt;&lt;a href=&#34;#pcap&#34; class=&#34;headerlink&#34; title=&#34;.pcap&#34;&gt;&lt;/a&gt;&lt;strong&gt;.pcap&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;追踪TCP流&lt;h2 id=&#34;图片&#34;&gt;&lt;a href=&#34;#图片&#34; class=&#34;headerlink&#34; title=&#34;图片&#34;&gt;&lt;/a&gt;图片&lt;/h2&gt;&lt;h3 id=&#34;先用010看看文件头：&#34;&gt;&lt;a href=&#34;#先用010看看文件头：&#34; class=&#34;headerlink&#34; title=&#34;先用010看看文件头：&#34;&gt;&lt;/a&gt;先用010看看文件头：&lt;/h3&gt;（若文件头是pk则是压缩包）&lt;h3 id=&#34;winhex查找ctf&#34;&gt;&lt;a href=&#34;#winhex查找ctf&#34; class=&#34;headerlink&#34; title=&#34;winhex查找ctf&#34;&gt;&lt;/a&gt;winhex查找ctf&lt;/h3&gt;&lt;h3 id=&#34;binwalk分离文件&#34;&gt;&lt;a href=&#34;#binwalk分离文件&#34; class=&#34;headerlink&#34; title=&#34;binwalk分离文件&#34;&gt;&lt;/a&gt;binwalk分离文件&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;binwalk -e a.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;若010查看文件后无头绪，可用binwalk分析，这时不用加-e&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;图片&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#图片&#34;&gt;#&lt;/a&gt; 图片&lt;/h2&gt;
-&lt;h3 id=&#34;先用010看看文件头&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#先用010看看文件头&#34;&gt;#&lt;/a&gt; 先用 010 看看文件头：&lt;/h3&gt;
-&lt;p&gt;（若文件头是 pk 则是压缩包）&lt;/p&gt;
-&lt;h3 id=&#34;winhex查找ctf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#winhex查找ctf&#34;&gt;#&lt;/a&gt; winhex 查找 ctf&lt;/h3&gt;
-&lt;h3 id=&#34;binwalk分离文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#binwalk分离文件&#34;&gt;#&lt;/a&gt; binwalk 分离文件&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;binwalk -e a.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;若 010 查看文件后无头绪，可用 binwalk 分析，这时不用加 - e&lt;/li&gt;
+&lt;h3 id=&#34;可能藏在属性里&#34;&gt;&lt;a href=&#34;#可能藏在属性里&#34; class=&#34;headerlink&#34; title=&#34;可能藏在属性里&#34;&gt;&lt;/a&gt;可能藏在属性里&lt;/h3&gt;&lt;h2 id=&#34;dd分离&#34;&gt;&lt;a href=&#34;#dd分离&#34; class=&#34;headerlink&#34; title=&#34;dd分离&#34;&gt;&lt;/a&gt;dd分离&lt;/h2&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;dd if=1.jpg of=2.jpg skip=48221 bs=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;if 指定输入文件，of 指定输出文件，skip 指定从输入文件开头跳过 48221 个块后开始复制(binwalk第一列内容)，bs 设置每次读写块的大小为1字节&lt;/p&gt;
+&lt;h3 id=&#34;foremost&#34;&gt;&lt;a href=&#34;#foremost&#34; class=&#34;headerlink&#34; title=&#34;foremost&#34;&gt;&lt;/a&gt;foremost&lt;/h3&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;压缩包密码：&#34;&gt;&lt;a href=&#34;#压缩包密码：&#34; class=&#34;headerlink&#34; title=&#34;压缩包密码：&#34;&gt;&lt;/a&gt;压缩包密码：&lt;/h2&gt;&lt;h3 id=&#34;暴力破解&#34;&gt;&lt;a href=&#34;#暴力破解&#34; class=&#34;headerlink&#34; title=&#34;暴力破解&#34;&gt;&lt;/a&gt;暴力破解&lt;/h3&gt;&lt;h3 id=&#34;可能有密文&#34;&gt;&lt;a href=&#34;#可能有密文&#34; class=&#34;headerlink&#34; title=&#34;可能有密文&#34;&gt;&lt;/a&gt;可能有密文&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;所在位置：&lt;br&gt;图片属性&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;可能藏在属性里&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可能藏在属性里&#34;&gt;#&lt;/a&gt; 可能藏在属性里&lt;/h3&gt;
-&lt;h2 id=&#34;dd分离&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dd分离&#34;&gt;#&lt;/a&gt; dd 分离&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;dd if=1.jpg of=2.jpg skip=48221 bs=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;if 指定输入文件，of 指定输出文件，skip 指定从输入文件开头跳过 48221 个块后开始复制 (binwalk 第一列内容)，bs 设置每次读写块的大小为 1 字节&lt;/p&gt;
-&lt;h3 id=&#34;foremost&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#foremost&#34;&gt;#&lt;/a&gt; foremost&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;压缩包密码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#压缩包密码&#34;&gt;#&lt;/a&gt; 压缩包密码：&lt;/h2&gt;
-&lt;h3 id=&#34;暴力破解&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#暴力破解&#34;&gt;#&lt;/a&gt; 暴力破解&lt;/h3&gt;
-&lt;h3 id=&#34;可能有密文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可能有密文&#34;&gt;#&lt;/a&gt; 可能有密文&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;所在位置：&lt;br&gt;
-图片属性&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#隐写&#34;&gt;#&lt;/a&gt; 隐写&lt;/h2&gt;
-&lt;h3 id=&#34;pdf文件-有水印&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pdf文件-有水印&#34;&gt;#&lt;/a&gt; pdf 文件、有水印&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;隐写&#34;&gt;&lt;a href=&#34;#隐写&#34; class=&#34;headerlink&#34; title=&#34;隐写&#34;&gt;&lt;/a&gt;隐写&lt;/h2&gt;&lt;h3 id=&#34;pdf文件、有水印&#34;&gt;&lt;a href=&#34;#pdf文件、有水印&#34; class=&#34;headerlink&#34; title=&#34;pdf文件、有水印&#34;&gt;&lt;/a&gt;pdf文件、有水印&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;全选发现能选中水印，复制到记事本能看见一串密文&lt;/li&gt;
-&lt;li&gt;可能是摩斯密码：A：.    B:-     空格：/&lt;/li&gt;
+&lt;li&gt;可能是摩斯密码：A：.    B:-     空格：/&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;BABA BBB BA BBA ABA AB B AAB ABAA AB B AA BBB BA AAA BBAABB AABA ABAA AB BBA BBBAAA ABBBB BA AAAB ABBBB AAAAA ABBBB BAAA ABAA AAABB BB AAABB AAAAA AAAAA AAAAB BBA AAABB&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;base64隐写&#34;&gt;&lt;a href=&#34;#base64隐写&#34; class=&#34;headerlink&#34; title=&#34;base64隐写&#34;&gt;&lt;/a&gt;base64隐写&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;CTFCrackTools&lt;h3 id=&#34;LSB隐写&#34;&gt;&lt;a href=&#34;#LSB隐写&#34; class=&#34;headerlink&#34; title=&#34;LSB隐写&#34;&gt;&lt;/a&gt;LSB隐写&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;stegsolve&lt;br&gt;文件用stegsolve打开，Analyse，Date Extract，勾选red blue green3个0，模式选rbg&lt;/li&gt;
+&lt;li&gt;kali zsteg&lt;br&gt;zsteg 1.png&lt;/li&gt;
+&lt;li&gt;若发现EP后文件头为png则save bin为png文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;BABA BBB BA BBA ABA AB B AAB ABAA AB B AA BBB BA AAA BBAABB AABA ABAA AB BBA BBBAAA ABBBB BA AAAB ABBBB AAAAA ABBBB BAAA ABAA AAABB BB AAABB AAAAA AAAAA AAAAB BBA AAABB&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;base64隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#base64隐写&#34;&gt;#&lt;/a&gt; base64 隐写&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;CTFCrackTools&lt;/li&gt;
+&lt;h2 id=&#34;社会主义核心价值观加密&#34;&gt;&lt;a href=&#34;#社会主义核心价值观加密&#34; class=&#34;headerlink&#34; title=&#34;社会主义核心价值观加密&#34;&gt;&lt;/a&gt;社会主义核心价值观加密&lt;/h2&gt;&lt;h2 id=&#34;WireShark&#34;&gt;&lt;a href=&#34;#WireShark&#34; class=&#34;headerlink&#34; title=&#34;WireShark&#34;&gt;&lt;/a&gt;WireShark&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;过滤post请求（登录密码都是post提交）&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http.request.method==&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;lsb隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsb隐写&#34;&gt;#&lt;/a&gt; LSB 隐写&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;stegsolve&lt;br&gt;
- 文件用 stegsolve 打开，Analyse，Date Extract，勾选 red blue green3 个 0，模式选 rbg&lt;/li&gt;
-&lt;li&gt;kali zsteg&lt;br&gt;
-zsteg 1.png&lt;/li&gt;
-&lt;li&gt;若发现 EP 后文件头为 png 则 save bin 为 png 文件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;社会主义核心价值观加密&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#社会主义核心价值观加密&#34;&gt;#&lt;/a&gt; 社会主义核心价值观加密&lt;/h2&gt;
-&lt;h2 id=&#34;wireshark&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#wireshark&#34;&gt;#&lt;/a&gt; WireShark&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;过滤 post 请求（登录密码都是 post 提交）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http.request.method==&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
         <updated>2023-08-16T16:00:00.000Z</updated>
     </entry>
