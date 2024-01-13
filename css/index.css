@@ -1887,7 +1887,7 @@ html {
     color: #e98ca1;
   }
   #aside-content #card-toc .toc-content .toc-link.active {
-    background: #00c4b6;
+    background: #e98ca1;
     color: #fff;
   }
   #aside-content .sticky_layout:only-child > :first-child {
