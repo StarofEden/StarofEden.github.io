@@ -646,11 +646,11 @@ html {
     vertical-align: middle;
   }
   *::-moz-selection {
-    background: #428bca;
+    background: #5db0f9;
     color: #f7f7f7;
   }
   *::selection {
-    background: #428bca;
+    background: #5db0f9;
     color: #f7f7f7;
   }
   button {

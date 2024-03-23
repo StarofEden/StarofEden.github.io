@@ -4,9 +4,9 @@
     <title>StarofEden🌸</title>
     <link href="https://StarofEden.github.io" />
     <updated>2023-11-09T16:00:00.000Z</updated>
+    <category term="mysql" />
     <category term="JavaScript" />
     <category term="nodejs" />
-    <category term="mysql" />
     <category term="xctf" />
     <category term="网络安全" />
     <category term="html" />
@@ -251,6 +251,50 @@
         <updated>2023-11-05T16:00:00.000Z</updated>
     </entry>
     <entry>
+        <id>https://starofeden.github.io/2023/11/04/JS/</id>
+        <title>js百炼成仙总结</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/11/04/JS/"/>
+        <content type="html">&lt;h1 id=&#34;基础&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础&#34;&gt;#&lt;/a&gt; 基础&lt;/h1&gt;
+&lt;h2 id=&#34;对象数据类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对象数据类型&#34;&gt;#&lt;/a&gt; 对象数据类型&lt;/h2&gt;
+&lt;h3 id=&#34;创建&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建&#34;&gt;#&lt;/a&gt; 创建&lt;/h3&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; container = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	caoyao : &lt;span class=&#34;string&#34;&gt;&amp;quot;解毒草&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;attr&#34;&gt;feijain&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;quot;乌木剑&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var container = &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;container.caoyao = &amp;quot;解毒草&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;container.feijian = &amp;quot;乌木剑&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;调用对象中的属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#调用对象中的属性&#34;&gt;#&lt;/a&gt; 调用对象中的属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;当调用的是一个中括号就需要用 []&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var container = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	caoyao : &amp;quot;解毒草&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	feijain: &amp;quot;乌木剑&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var prop = &amp;quot;caoyao&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(container[prop])&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;遍历对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遍历对象&#34;&gt;#&lt;/a&gt; 遍历对象&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;typeof()&lt;br&gt;
+ 定义一个对象时后面要加分好，定义函数不用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var a = &amp;quot;123&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var fun = function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(typeof(a));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(typeof(fun));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311071940503.png&#34; alt=&#34;屏幕截图 2023-11-07 193954&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;遍历对象获得属性名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; yexiaofan = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    name : &lt;span class=&#34;string&#34;&gt;&amp;quot;叶小凡&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    age : &lt;span class=&#34;number&#34;&gt;16&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    eat : &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;KFCvm50&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; p &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; yexiaofan)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(p)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;name&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;age&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;eat&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;遍历对象获得值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; p &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; yexiaofan)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(p + &lt;span class=&#34;string&#34;&gt;&amp;quot;=&amp;quot;&lt;/span&gt; + yexiaofan[p]);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;数组&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组&#34;&gt;#&lt;/a&gt; 数组&lt;/h2&gt;
+&lt;h3 id=&#34;数组的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组的定义&#34;&gt;#&lt;/a&gt; 数组的定义&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;直接定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var arr = [&amp;quot;first&amp;quot;,&amp;quot;second&amp;quot;,&amp;quot;third&amp;quot;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(arr)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;构造函数创建数组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var arr = new Array(8);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(a.length)  //8,数组只有一个length属性&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;数组内置函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组内置函数&#34;&gt;#&lt;/a&gt; 数组内置函数&lt;/h3&gt;
+</content>
+        <updated>2023-11-03T16:00:00.000Z</updated>
+    </entry>
+    <entry>
         <id>https://starofeden.github.io/2023/11/04/XSS/</id>
         <title>XSS跨站脚本攻击</title>
         <link rel="alternate" href="https://starofeden.github.io/2023/11/04/XSS/"/>
@@ -425,50 +469,6 @@ onerror 函数的话，是在 img 这个标签无法正常执行的时候触发�
 &lt;p&gt;&lt;strong&gt;注意键值对的引号别漏了&lt;/strong&gt;&lt;br&gt;
 还有一个 JQuery 方法：&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;$.post(&amp;quot;http://127.0.0.1/api/amount.php&amp;quot;,&amp;#123;&amp;#x27;u&amp;#x27;:&amp;#x27;ad&amp;#x27; ,&amp;#x27;a&amp;#x27;:10000&amp;#125;,&amp;quot;json&amp;quot;);&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
-        <updated>2023-11-03T16:00:00.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://starofeden.github.io/2023/11/04/JS/</id>
-        <title>js百炼成仙总结</title>
-        <link rel="alternate" href="https://starofeden.github.io/2023/11/04/JS/"/>
-        <content type="html">&lt;h1 id=&#34;基础&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础&#34;&gt;#&lt;/a&gt; 基础&lt;/h1&gt;
-&lt;h2 id=&#34;对象数据类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对象数据类型&#34;&gt;#&lt;/a&gt; 对象数据类型&lt;/h2&gt;
-&lt;h3 id=&#34;创建&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建&#34;&gt;#&lt;/a&gt; 创建&lt;/h3&gt;
-&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; container = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	caoyao : &lt;span class=&#34;string&#34;&gt;&amp;quot;解毒草&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;attr&#34;&gt;feijain&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;quot;乌木剑&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var container = &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;container.caoyao = &amp;quot;解毒草&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;container.feijian = &amp;quot;乌木剑&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;调用对象中的属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#调用对象中的属性&#34;&gt;#&lt;/a&gt; 调用对象中的属性&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;当调用的是一个中括号就需要用 []&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var container = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	caoyao : &amp;quot;解毒草&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	feijain: &amp;quot;乌木剑&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var prop = &amp;quot;caoyao&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(container[prop])&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;遍历对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遍历对象&#34;&gt;#&lt;/a&gt; 遍历对象&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;typeof()&lt;br&gt;
- 定义一个对象时后面要加分好，定义函数不用&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var a = &amp;quot;123&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var fun = function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(typeof(a));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(typeof(fun));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202311071940503.png&#34; alt=&#34;屏幕截图 2023-11-07 193954&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;遍历对象获得属性名称&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; yexiaofan = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    name : &lt;span class=&#34;string&#34;&gt;&amp;quot;叶小凡&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    age : &lt;span class=&#34;number&#34;&gt;16&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    eat : &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;KFCvm50&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; p &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; yexiaofan)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(p)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;name&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;age&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;eat&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;遍历对象获得值&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; p &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; yexiaofan)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;log&lt;/span&gt;(p + &lt;span class=&#34;string&#34;&gt;&amp;quot;=&amp;quot;&lt;/span&gt; + yexiaofan[p]);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;数组&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组&#34;&gt;#&lt;/a&gt; 数组&lt;/h2&gt;
-&lt;h3 id=&#34;数组的定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组的定义&#34;&gt;#&lt;/a&gt; 数组的定义&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;直接定义&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var arr = [&amp;quot;first&amp;quot;,&amp;quot;second&amp;quot;,&amp;quot;third&amp;quot;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(arr)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;构造函数创建数组&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var arr = new Array(8);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(a.length)  //8,数组只有一个length属性&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;数组内置函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组内置函数&#34;&gt;#&lt;/a&gt; 数组内置函数&lt;/h3&gt;
-</content>
         <updated>2023-11-03T16:00:00.000Z</updated>
     </entry>
     <entry>
@@ -1465,45 +1465,44 @@ Burpsuite 把自己作为恶意服务器，当用户通过已访问过可信任�
         <id>https://starofeden.github.io/2023/08/17/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84misc%E5%AD%A6%E4%B9%A0/</id>
         <title>ctfshow misc做题笔记</title>
         <link rel="alternate" href="https://starofeden.github.io/2023/08/17/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84misc%E5%AD%A6%E4%B9%A0/"/>
-        <content type="html">&lt;h1 id=&#34;从0开始的misc学习&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#从0开始的misc学习&#34;&gt;#&lt;/a&gt; 从 0 开始的 misc 学习&lt;/h1&gt;
-&lt;h2 id=&#34;pcap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pcap&#34;&gt;#&lt;/a&gt; &lt;strong&gt;.pcap&lt;/strong&gt;&lt;/h2&gt;
+        <content type="html">&lt;h1 id=&#34;pcap&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pcap&#34;&gt;#&lt;/a&gt; &lt;strong&gt;.pcap&lt;/strong&gt;&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;追踪 TCP 流&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;图片&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#图片&#34;&gt;#&lt;/a&gt; 图片&lt;/h2&gt;
-&lt;h3 id=&#34;先用010看看文件头&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#先用010看看文件头&#34;&gt;#&lt;/a&gt; 先用 010 看看文件头：&lt;/h3&gt;
+&lt;h1 id=&#34;图片&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#图片&#34;&gt;#&lt;/a&gt; 图片&lt;/h1&gt;
+&lt;h2 id=&#34;先用010看看文件头&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#先用010看看文件头&#34;&gt;#&lt;/a&gt; 先用 010 看看文件头：&lt;/h2&gt;
 &lt;p&gt;（若文件头是 pk 则是压缩包）&lt;/p&gt;
-&lt;h3 id=&#34;winhex查找ctf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#winhex查找ctf&#34;&gt;#&lt;/a&gt; winhex 查找 ctf&lt;/h3&gt;
-&lt;h3 id=&#34;binwalk分离文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#binwalk分离文件&#34;&gt;#&lt;/a&gt; binwalk 分离文件&lt;/h3&gt;
+&lt;h2 id=&#34;winhex查找ctf&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#winhex查找ctf&#34;&gt;#&lt;/a&gt; winhex 查找 ctf&lt;/h2&gt;
+&lt;h2 id=&#34;binwalk分离文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#binwalk分离文件&#34;&gt;#&lt;/a&gt; binwalk 分离文件&lt;/h2&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;binwalk -e a.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;若 010 查看文件后无头绪，可用 binwalk 分析，这时不用加 - e&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;可能藏在属性里&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可能藏在属性里&#34;&gt;#&lt;/a&gt; 可能藏在属性里&lt;/h3&gt;
-&lt;h2 id=&#34;dd分离&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dd分离&#34;&gt;#&lt;/a&gt; dd 分离&lt;/h2&gt;
+&lt;h2 id=&#34;可能藏在属性里&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可能藏在属性里&#34;&gt;#&lt;/a&gt; 可能藏在属性里&lt;/h2&gt;
+&lt;h1 id=&#34;dd分离&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dd分离&#34;&gt;#&lt;/a&gt; dd 分离&lt;/h1&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;dd if=1.jpg of=2.jpg skip=48221 bs=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;if 指定输入文件，of 指定输出文件，skip 指定从输入文件开头跳过 48221 个块后开始复制 (binwalk 第一列内容)，bs 设置每次读写块的大小为 1 字节&lt;/p&gt;
-&lt;h3 id=&#34;foremost&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#foremost&#34;&gt;#&lt;/a&gt; foremost&lt;/h3&gt;
+&lt;h2 id=&#34;foremost&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#foremost&#34;&gt;#&lt;/a&gt; foremost&lt;/h2&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;压缩包密码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#压缩包密码&#34;&gt;#&lt;/a&gt; 压缩包密码：&lt;/h2&gt;
-&lt;h3 id=&#34;暴力破解&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#暴力破解&#34;&gt;#&lt;/a&gt; 暴力破解&lt;/h3&gt;
-&lt;h3 id=&#34;可能有密文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可能有密文&#34;&gt;#&lt;/a&gt; 可能有密文&lt;/h3&gt;
+&lt;h1 id=&#34;压缩包密码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#压缩包密码&#34;&gt;#&lt;/a&gt; 压缩包密码：&lt;/h1&gt;
+&lt;h2 id=&#34;暴力破解&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#暴力破解&#34;&gt;#&lt;/a&gt; 暴力破解&lt;/h2&gt;
+&lt;h2 id=&#34;可能有密文&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可能有密文&#34;&gt;#&lt;/a&gt; 可能有密文&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;所在位置：&lt;br&gt;
 图片属性&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#隐写&#34;&gt;#&lt;/a&gt; 隐写&lt;/h2&gt;
-&lt;h3 id=&#34;pdf文件-有水印&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pdf文件-有水印&#34;&gt;#&lt;/a&gt; pdf 文件、有水印&lt;/h3&gt;
+&lt;h1 id=&#34;隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#隐写&#34;&gt;#&lt;/a&gt; 隐写&lt;/h1&gt;
+&lt;h2 id=&#34;pdf文件-有水印&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pdf文件-有水印&#34;&gt;#&lt;/a&gt; pdf 文件、有水印&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;全选发现能选中水印，复制到记事本能看见一串密文&lt;/li&gt;
 &lt;li&gt;可能是摩斯密码：A：.    B:-     空格：/&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;BABA BBB BA BBA ABA AB B AAB ABAA AB B AA BBB BA AAA BBAABB AABA ABAA AB BBA BBBAAA ABBBB BA AAAB ABBBB AAAAA ABBBB BAAA ABAA AAABB BB AAABB AAAAA AAAAA AAAAB BBA AAABB&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;base64隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#base64隐写&#34;&gt;#&lt;/a&gt; base64 隐写&lt;/h3&gt;
+&lt;h2 id=&#34;base64隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#base64隐写&#34;&gt;#&lt;/a&gt; base64 隐写&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;CTFCrackTools&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;lsb隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsb隐写&#34;&gt;#&lt;/a&gt; LSB 隐写&lt;/h3&gt;
+&lt;h2 id=&#34;lsb隐写&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#lsb隐写&#34;&gt;#&lt;/a&gt; LSB 隐写&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;stegsolve&lt;br&gt;
  文件用 stegsolve 打开，Analyse，Date Extract，勾选 red blue green3 个 0，模式选 rbg&lt;/li&gt;
@@ -1511,12 +1510,36 @@ Burpsuite 把自己作为恶意服务器，当用户通过已访问过可信任�
 zsteg 1.png&lt;/li&gt;
 &lt;li&gt;若发现 EP 后文件头为 png 则 save bin 为 png 文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;社会主义核心价值观加密&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#社会主义核心价值观加密&#34;&gt;#&lt;/a&gt; 社会主义核心价值观加密&lt;/h2&gt;
-&lt;h2 id=&#34;wireshark&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#wireshark&#34;&gt;#&lt;/a&gt; WireShark&lt;/h2&gt;
+&lt;h1 id=&#34;社会主义核心价值观加密&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#社会主义核心价值观加密&#34;&gt;#&lt;/a&gt; 社会主义核心价值观加密&lt;/h1&gt;
+&lt;h1 id=&#34;wireshark&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#wireshark&#34;&gt;#&lt;/a&gt; WireShark&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;过滤 post 请求（登录密码都是 post 提交）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http.request.method==&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;功夫再高也怕菜刀pcapng文件分析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#功夫再高也怕菜刀pcapng文件分析&#34;&gt;#&lt;/a&gt; 功夫再高也怕菜刀 ——pcapng 文件分析&lt;/h1&gt;
+&lt;h2 id=&#34;拿到一个pcapng文件先binwalk分离一下&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#拿到一个pcapng文件先binwalk分离一下&#34;&gt;#&lt;/a&gt; 拿到一个 pcapng 文件，先 binwalk 分离一下&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;分离时有压缩包报错了，安装了 sasquatch 之后成功解压&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;binwalk -eM 6666.pcapng --run-as=root&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;分离之后发现一个压缩包，需要密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;wireshark分析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#wireshark分析&#34;&gt;#&lt;/a&gt; wireshark 分析&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;输入表达式：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http contains &amp;quot;flag&amp;quot; 或者 tcp contains flag&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;追踪 TCP 流发现有一个 6666.jpg&lt;/li&gt;
+&lt;li&gt;分组字节流搜索 6666.jpg，并追踪 TCP 流，找到 jpg 文件的文件头和文件尾并复制到 WinHex&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202403231009656.png&#34; alt=&#34;d2ef4e90e67e4adcb52ca8aa6d307295&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;winhex&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#winhex&#34;&gt;#&lt;/a&gt; Winhex&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;新建一个文件，剪贴板粘贴选择 ASCLL HEX&lt;br&gt;
+ 保存为 jpg 文件打开就可以看到压缩包密码了。&lt;/li&gt;
+&lt;/ul&gt;
 </content>
         <updated>2023-08-16T16:00:00.000Z</updated>
     </entry>
