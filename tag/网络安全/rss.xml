@@ -5,13 +5,47 @@
         <link>https://StarofEden.github.io</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Thu, 09 Nov 2023 00:00:00 +0800</pubDate>
-        <lastBuildDate>Thu, 09 Nov 2023 00:00:00 +0800</lastBuildDate>
+        <pubDate>Mon, 29 Apr 2024 00:00:00 +0800</pubDate>
+        <lastBuildDate>Mon, 29 Apr 2024 00:00:00 +0800</lastBuildDate>
         <category>JavaScript</category>
         <category>nodejs</category>
-        <category>xctf</category>
         <category>网络安全</category>
+        <category>php</category>
+        <category>代码审计</category>
+        <category>ctf</category>
+        <category>web</category>
+        <category>xctf</category>
         <category>html</category>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2024/04/29/php%E5%AD%A6%E4%B9%A0/</guid>
+            <title>从0开始的php学习</title>
+            <link>https://starofeden.github.io/2024/04/29/php%E5%AD%A6%E4%B9%A0/</link>
+            <category>网络安全</category>
+            <category>php</category>
+            <category>代码审计</category>
+            <pubDate>Mon, 29 Apr 2024 00:00:00 +0800</pubDate>
+            <description><![CDATA[  ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2024/04/27/javaweb%E6%BC%8F%E6%B4%9E/</guid>
+            <title>ctf-web每日一题</title>
+            <link>https://starofeden.github.io/2024/04/27/javaweb%E6%BC%8F%E6%B4%9E/</link>
+            <category>网络安全</category>
+            <category>ctf</category>
+            <category>web</category>
+            <pubDate>Sat, 27 Apr 2024 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;web486-后台扫描&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#web486-后台扫描&#34;&gt;#&lt;/a&gt; web486 - 后台扫描&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;使用御剑扫描扫出来了。wp 说存在 flag.php&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202404271835633.png&#34; alt=&#34;image-20240427183530545&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用文件包含…/flag 就出来了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://starofeden.github.io/2023/11/09/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/</guid>
             <title>危险的 target=&#34;_blank&#34; 与 “opener”</title>

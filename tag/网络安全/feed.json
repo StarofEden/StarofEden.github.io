@@ -5,6 +5,30 @@
     "home_page_url": "https://StarofEden.github.io",
     "items": [
         {
+            "id": "https://starofeden.github.io/2024/04/29/php%E5%AD%A6%E4%B9%A0/",
+            "url": "https://starofeden.github.io/2024/04/29/php%E5%AD%A6%E4%B9%A0/",
+            "title": "从0开始的php学习",
+            "date_published": "2024-04-28T16:00:00.000Z",
+            "content_html": "",
+            "tags": [
+                "网络安全",
+                "php",
+                "代码审计"
+            ]
+        },
+        {
+            "id": "https://starofeden.github.io/2024/04/27/javaweb%E6%BC%8F%E6%B4%9E/",
+            "url": "https://starofeden.github.io/2024/04/27/javaweb%E6%BC%8F%E6%B4%9E/",
+            "title": "ctf-web每日一题",
+            "date_published": "2024-04-26T16:00:00.000Z",
+            "content_html": "<h1 id=\"web486-后台扫描\"><a class=\"markdownIt-Anchor\" href=\"#web486-后台扫描\">#</a> web486 - 后台扫描</h1>\n<ul>\n<li>\n<p>使用御剑扫描扫出来了。wp 说存在 flag.php</p>\n<p><img src=\"https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202404271835633.png\" alt=\"image-20240427183530545\"></p>\n</li>\n<li>\n<p>使用文件包含…/flag 就出来了</p>\n</li>\n</ul>\n",
+            "tags": [
+                "网络安全",
+                "ctf",
+                "web"
+            ]
+        },
+        {
             "id": "https://starofeden.github.io/2023/11/09/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/",
             "url": "https://starofeden.github.io/2023/11/09/%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB/",
             "title": "危险的 target=\"_blank\" 与 “opener”",

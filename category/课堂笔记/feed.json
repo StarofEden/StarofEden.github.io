@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "StarofEden🌸 • All posts by \"课堂笔记\" category",
+    "description": "",
+    "home_page_url": "https://StarofEden.github.io",
+    "items": [
+        {
+            "id": "https://starofeden.github.io/2024/04/29/php%E5%AD%A6%E4%B9%A0/",
+            "url": "https://starofeden.github.io/2024/04/29/php%E5%AD%A6%E4%B9%A0/",
+            "title": "从0开始的php学习",
+            "date_published": "2024-04-28T16:00:00.000Z",
+            "content_html": "",
+            "tags": [
+                "网络安全",
+                "php",
+                "代码审计"
+            ]
+        }
+    ]
+}

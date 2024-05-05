@@ -1626,7 +1626,7 @@ html {
     position: relative;
     overflow: hidden;
     margin-top: 20px;
-    padding: 20px 24px;
+    padding: 20px 20px;
   }
   #aside-content .card-info .author-info__name {
     font-weight: 500;
@@ -1847,11 +1847,11 @@ html {
     }
   }
   #aside-content #card-toc .toc-content > * {
-    margin: 0 20px !important;
+    margin: 0 2px !important;
   }
   #aside-content #card-toc .toc-content > * > .toc-item > .toc-child {
-    margin-left: 10px;
-    padding-left: 10px;
+    margin-left: 4px;
+    padding-left: 4px;
     border-left: 1px solid var(--dark-grey);
   }
   #aside-content #card-toc .toc-content:not(.is-expand) .toc-child {
@@ -1874,12 +1874,12 @@ html {
   }
   #aside-content #card-toc .toc-content ol {
     margin: 0;
-    padding-left: 18px;
+    padding-left: 16px;
   }
   #aside-content #card-toc .toc-content .toc-link {
     display: block;
-    margin: 4px 0;
-    padding: 1px 6px;
+    margin: 1px 0;
+    padding: 1px 4px;
     color: var(--toc-link-color);
     transition: all 0.2s ease-in-out;
   }
