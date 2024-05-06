@@ -634,21 +634,7 @@ h6::before {
   background-color: #e98ca1;
 }
 
-/*导航栏常驻*/
-.nav-fixed #nav{
-  transform: translateY(58px)!important;
-  -webkit-transform: translateY(58px)!important;
-  -moz-transform: translateY(58px)!important;
-  -ms-transform: translateY(58px)!important;
-  -o-transform: translateY(58px)!important;
-}
-#nav{
-  transition: none!important;
-  -webkit-transition: none!important;
-  -moz-transition: none!important;
-  -ms-transition: none!important;
-  -o-transition: none!important;
-}
+
 
 
 /* 雪花特效 */
@@ -699,7 +685,7 @@ h6::before {
   font-family: "Font Awesome 6 Free";
   text-align: center;
   color: white;
-  line-height: 34px; /*如果有溢出或者垂直不居中的现象微调一下这个参数*/
+  line-height: 36px; /*如果有溢出或者垂直不居中的现象微调一下这个参数*/
   font-size: 18px; /*根据个人喜好*/
 }
 #site-name:hover::before {
@@ -709,6 +695,22 @@ h6::before {
 #site-name {
   position: relative;
   font-size: 24px; /*一定要把字体调大点，否则效果惨不忍睹！*/
+}
+
+/*导航栏常驻*/
+.nav-fixed #nav{
+  transform: translateY(58px)!important;
+  -webkit-transform: translateY(58px)!important;
+  -moz-transform: translateY(58px)!important;
+  -ms-transform: translateY(58px)!important;
+  -o-transform: translateY(58px)!important;
+}
+#nav{
+  transition: none!important;
+  -webkit-transition: none!important;
+  -moz-transition: none!important;
+  -ms-transition: none!important;
+  -o-transition: none!important;
 }
 
 /* 导航栏显示标题 */
