@@ -5,17 +5,27 @@
         <link>https://StarofEden.github.io</link>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sat, 27 Apr 2024 00:00:00 +0800</pubDate>
-        <lastBuildDate>Sat, 27 Apr 2024 00:00:00 +0800</lastBuildDate>
+        <pubDate>Wed, 08 May 2024 00:00:00 +0800</pubDate>
+        <lastBuildDate>Wed, 08 May 2024 00:00:00 +0800</lastBuildDate>
+        <category>JavaScript</category>
+        <category>nodejs</category>
         <category>网络安全</category>
         <category>ctf</category>
         <category>web</category>
-        <category>JavaScript</category>
-        <category>nodejs</category>
-        <category>php</category>
-        <category>代码审计</category>
         <category>xctf</category>
         <category>html</category>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2024/05/08/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
+            <title>网络攻防实验笔记</title>
+            <link>https://starofeden.github.io/2024/05/08/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
+            <category>网络安全</category>
+            <category>web</category>
+            <pubDate>Wed, 08 May 2024 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;信息搜集&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#信息搜集&#34;&gt;#&lt;/a&gt; 信息搜集&lt;/h1&gt;
+&lt;h2 id=&#34;常用关键字&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用关键字&#34;&gt;#&lt;/a&gt; 常用关键字&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;见 PPT&lt;/em&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://starofeden.github.io/2024/04/27/javaweb%E6%BC%8F%E6%B4%9E/</guid>
             <title>ctf-web每日一题</title>
@@ -24,11 +34,14 @@
             <category>ctf</category>
             <category>web</category>
             <pubDate>Sat, 27 Apr 2024 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;web486-后台扫描&#34;&gt;&lt;a href=&#34;#web486-后台扫描&#34; class=&#34;headerlink&#34; title=&#34;web486-后台扫描&#34;&gt;&lt;/a&gt;web486-后台扫描&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;使用御剑扫描扫出来了。wp说存在flag.php&lt;/p&gt;
+            <description><![CDATA[ &lt;h1 id=&#34;web486-后台扫描&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#web486-后台扫描&#34;&gt;#&lt;/a&gt; web486 - 后台扫描&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;使用御剑扫描扫出来了。wp 说存在 flag.php&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202404271835633.png&#34; alt=&#34;image-20240427183530545&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;使用文件包含../flag就出来了&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;使用文件包含…/flag 就出来了&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
  ]]></description>
