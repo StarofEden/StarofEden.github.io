@@ -1,0 +1,194 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: StarofEden🌸
+subtitle: 
+description: ''
+keywords: ctf,web安全
+author: StarofEden
+language: zh-CN
+timezone: ''
+
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: https://StarofEden.github.io
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :year-:month-:day-:title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 12
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: butterfly
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: git
+  repository: git@github.com:StarofEden/StarofEden.github.io.git
+  branch: main
+
+server:
+  port: 40401
+  compress: true
+  header: true
+
+search:
+  path: search.xml
+  field: post
+  content: true
+
+#双侧栏
+butterfly_article_double_row:
+  enable: false
+
+#动态弹出文章
+wowjs:
+  enable: true #控制动画开关。true是打开，false是关闭
+  priority: 10 #过滤器优先级
+  mobile: false #移动端是否启用，默认移动端禁用
+  animateitem:
+    - class: recent-post-item #必填项，需要添加动画的元素的class
+      style: animate__zoomIn #必填项，需要添加的动画
+      duration: 2s #选填项，动画持续时间，单位可以是ms也可以是s。例如3s，700ms。
+      delay: 1s #选填项，动画开始的延迟时间，单位可以是ms也可以是s。例如3s，700ms。
+      offset: 100 #选填项，开始动画的距离（相对浏览器底部）
+      iteration: 2 #选填项，动画重复的次数
+    - class: card-widget
+      style: animate__zoomIn
+  animate_css: https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css
+  wow_js: https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js
+  wow_init_js: https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js
+
+magnet:
+  enable: true
+  priority: 1
+  enable_page: /
+  type: categories
+  devide: 2
+  display:
+    - name: blog
+      display_name: blog魔改心得
+      icon: 🍇
+    - name: 计算机
+      display_name: 鱼鱼猫の计算机学习
+      icon: 🌏
+    - name: 考公考编
+      display_name: 考公考编总结
+      icon: 🌺
+    - name: 网络安全
+      display_name: 网络安全学习
+      icon: 👩‍💻
+    - name: 生活
+      display_name: 鱼鱼猫の生活记录
+      icon: 🍀
+    - name: 学习
+      display_name: 鱼鱼猫の学习记录
+      icon: 😇
+  color_setting:
+    text_color: black
+    text_hover_color: white
+    background_color: "#f2f2f2"
+    background_hover_color: "#df90a3"
+  layout:
+    type: id
+    name: recent-posts
+    index: 0
+  temple_html: '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet">${temple_html_item}</div></div>'
+  plus_style: ""
+
+# 首页轮播图
+# hexo-butterfly-swiper
+# see https://akilar.top/posts/8e1264d1/
+swiper:
+  enable: true # 开关
+  priority: 1 #过滤器优先权
+  enable_page: / # 应用页面
+  timemode: date #date/updated
+  layout: # 挂载容器类型
+    type: id
+    name: recent-posts
+    index: 0
+  default_descr: 再怎么看我也不知道怎么描述它的啦！
+  swiper_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css #swiper css依赖
+  swiper_js: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js #swiper js依赖
+  custom_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css # 适配主题样式补丁
+  custom_js: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js # swiper初始化方法

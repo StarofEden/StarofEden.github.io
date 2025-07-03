@@ -1,0 +1,54 @@
+.post-body {
+  font-family: $font-family-posts;
+  word-wrap();
+
+  +desktop-large() {
+    font-size: $font-size-large;
+  }
+
+  +desktop() {
+    text-align: unquote(hexo-config('text_align.desktop'));
+  }
+
+  +tablet-mobile() {
+    text-align: unquote(hexo-config('text_align.mobile'));
+  }
+
+
+  .exturl .fa {
+    font-size: $font-size-small;
+    margin-left: 4px;
+  }
+
+  // For fancybox and pandoc
+  .image-caption, img + figcaption, .fancybox + figcaption {
+    color: $grey-dark;
+    font-size: $font-size-small;
+    font-weight: bold;
+    line-height: 1;
+    margin: -15px auto 15px;
+    text-align: center;
+  }
+
+  iframe, img, video, embed {
+    margin-bottom: 20px;
+  }
+
+  .video-container {
+    height: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding-top: 75%;
+    position: relative;
+    width: 100%;
+
+    iframe, object, embed {
+      height: 100%;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}

