@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>StarofEden🌸 • Posts by &#34;blog 博客美化&#34; tag</title>
+        <link>https://StarofEden.github.io</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Mon, 30 Jun 2025 00:00:00 +0800</pubDate>
+        <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0800</lastBuildDate>
+        <category>火狐插件</category>
+        <category>web安全</category>
+        <category>博客美化</category>
+        <category>ctf</category>
+        <category>blog 博客美化</category>
+        <item>
+            <guid isPermalink="true">https://starofeden.github.io/2025/06/30/%E6%8F%92%E5%85%A5B%E7%AB%99%E8%A7%86%E9%A2%91%E7%A4%BA%E4%BE%8B/</guid>
+            <title>B站视频示例</title>
+            <link>https://starofeden.github.io/2025/06/30/%E6%8F%92%E5%85%A5B%E7%AB%99%E8%A7%86%E9%A2%91%E7%A4%BA%E4%BE%8B/</link>
+            <category>blog 博客美化</category>
+            <pubDate>Mon, 30 Jun 2025 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;示例&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#示例&#34;&gt;#&lt;/a&gt; 示例：&lt;/h2&gt;
+&lt;div align=center class=&#34;aspect-ratio&#34;&gt;
+&lt;iframe src=&#34;//player.bilibili.com/player.html?isOutside=true&amp;aid=113009984866106&amp;bvid=BV1H6WmesEvu&amp;cid=500001659306026&amp;p=1&#34; scrolling=&#34;no&#34; border=&#34;0&#34; frameborder=&#34;no&#34; framespacing=&#34;0&#34; allowfullscreen=&#34;true&#34;&gt;&lt;/iframe&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;教程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#教程&#34;&gt;#&lt;/a&gt; 教程：&lt;/h2&gt;
+&lt;p&gt;在分享界面点击嵌入代码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202507021608062.png&#34; alt=&#34;image-20250702160816971&#34;&gt;&lt;/p&gt;
+&lt;p&gt;将复制的代码外面加上 div 标签就行：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;div align=center class=&amp;quot;aspect-ratio&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;iframe src=&amp;quot;//player.bilibili.com/player.html?isOutside=true&amp;amp;aid=113009984866106&amp;amp;bvid=BV1H6WmesEvu&amp;amp;cid=500001659306026&amp;amp;p=1&amp;quot; scrolling=&amp;quot;no&amp;quot; border=&amp;quot;0&amp;quot; frameborder=&amp;quot;no&amp;quot; framespacing=&amp;quot;0&amp;quot; allowfullscreen=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

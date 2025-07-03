@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://StarofEden.github.io</id>
+    <title>StarofEden🌸 • Posts by &#34;计算机&#34; category</title>
+    <link href="https://StarofEden.github.io" />
+    <updated>2025-07-01T16:00:00.000Z</updated>
+    <category term="火狐插件" />
+    <category term="web安全" />
+    <category term="博客美化" />
+    <category term="ctf" />
+    <category term="blog 博客美化" />
+    <entry>
+        <id>https://starofeden.github.io/2025/07/02/firefox%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6%E5%88%86%E4%BA%AB/</id>
+        <title>firefox好用插件分享</title>
+        <link rel="alternate" href="https://starofeden.github.io/2025/07/02/firefox%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6%E5%88%86%E4%BA%AB/"/>
+        <content type="html"></content>
+        <category term="火狐插件" />
+        <updated>2025-07-01T16:00:00.000Z</updated>
+    </entry>
+</feed>

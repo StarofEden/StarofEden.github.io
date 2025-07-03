@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "StarofEden🌸 • All posts by \"blog 博客美化\" tag",
+    "description": "",
+    "home_page_url": "https://StarofEden.github.io",
+    "items": [
+        {
+            "id": "https://starofeden.github.io/2025/06/30/%E6%8F%92%E5%85%A5B%E7%AB%99%E8%A7%86%E9%A2%91%E7%A4%BA%E4%BE%8B/",
+            "url": "https://starofeden.github.io/2025/06/30/%E6%8F%92%E5%85%A5B%E7%AB%99%E8%A7%86%E9%A2%91%E7%A4%BA%E4%BE%8B/",
+            "title": "B站视频示例",
+            "date_published": "2025-06-29T16:00:00.000Z",
+            "content_html": "<h2 id=\"示例\"><a class=\"markdownIt-Anchor\" href=\"#示例\">#</a> 示例：</h2>\n<div align=center class=\"aspect-ratio\">\n<iframe src=\"//player.bilibili.com/player.html?isOutside=true&aid=113009984866106&bvid=BV1H6WmesEvu&cid=500001659306026&p=1\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\"></iframe>\n    </iframe>\n</div>\n<h2 id=\"教程\"><a class=\"markdownIt-Anchor\" href=\"#教程\">#</a> 教程：</h2>\n<p>在分享界面点击嵌入代码：</p>\n<p><img src=\"https://starofeden-blog.oss-cn-chengdu.aliyuncs.com/img/202507021608062.png\" alt=\"image-20250702160816971\"></p>\n<p>将复制的代码外面加上 div 标签就行：</p>\n<figure class=\"highlight plaintext\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">&lt;div align=center class=&quot;aspect-ratio&quot;&gt;</span><br><span class=\"line\">&lt;iframe src=&quot;//player.bilibili.com/player.html?isOutside=true&amp;aid=113009984866106&amp;bvid=BV1H6WmesEvu&amp;cid=500001659306026&amp;p=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;</span><br><span class=\"line\">&lt;/iframe&gt;</span><br><span class=\"line\">&lt;/div&gt;</span><br></pre></td></tr></table></figure>\n",
+            "tags": [
+                "blog 博客美化"
+            ]
+        }
+    ]
+}
