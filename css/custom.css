@@ -60,6 +60,13 @@
   left: -125px;
 }
 
+/*添加了文章阴影*/
+[data-theme="light"] #post-info {
+  text-shadow: 
+    2px 2px 2px rgba(46, 13, 136, 0.807) !important;
+  transition: all 0.3s ease;
+}
+
 /*黑夜霓虹灯*/
 /* 日间模式不生效 */
 [data-theme="light"] #site-name,
@@ -602,8 +609,9 @@ body::-webkit-scrollbar {
     padding: 0 5px 0 5px;
   }
 }
-/* 除了首页以外其他页面隐藏卡片，并采用宽屏显示 */
-#archive,
+
+/*除了首页以外其他页面隐藏卡片，并采用宽屏显示*/
+/* #archive,
 #page,
 #category,
 #tag {
@@ -611,7 +619,42 @@ body::-webkit-scrollbar {
 }
 .page:not(.page.home) .aside-content {
   display: none;
+} */
+
+/* 文章页专属样式 */
+#archive,
+#page,
+#category,
+#tag {
+  width: 100%;
 }
+
+.post {
+  /* 先显示整个侧边栏 */
+  #aside-content {
+    display: block !important;
+  }
+
+  /* 然后只保留目录卡片 */
+  #aside-content > .card-widget:not(#card-toc) {
+    display: none !important;
+  }
+
+  /* 确保目录卡片可见 */
+  #card-toc {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* 非文章页隐藏整个侧边栏 */
+.page:not(.post):not(.page.home) #aside-content {
+  display: none !important;
+}
+
+
 
 .card-info-avatar .author-status-box {
   position: absolute;
@@ -945,3 +988,4 @@ center#name-container {
 hr:before {
   content: 'φ(>ω<*) ' !important;
 }
+
